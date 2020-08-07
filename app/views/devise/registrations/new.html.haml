@@ -4,12 +4,12 @@
   .field
     = f.label "ニックネーム"
     %br/
-    = f.text_field :nickname
+    = f.text_field :nickname, autofocus: true
 
   .field
     = f.label "メールアドレス"
     %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
+    = f.email_field :email, autocomplete: "email"
 
   .field
     = f.label "パスワード"

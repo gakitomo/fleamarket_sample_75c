@@ -1,0 +1,53 @@
+.header
+  .header__top
+    .header__top--logo
+      = image_tag "logo.png"
+    .header__top--search
+      = text_field_tag :search, "", class:"form-text", placeholder: "何をお探しですか？"
+
+
+  .header__bottom
+    .header__bottom__search
+      .header__bottom__search--category
+        =link_to "カテゴリから探す"
+      .header__bottom__search--brand
+        =link_to "ブランドから探す"
+    .header__bottom__mypage
+      =link_to "マイページ"
+.contents
+  .left-content
+    .sidebar__title
+      マイページメニュー
+      .list-group
+        .list-group__menu
+          =link_to "お知らせ"
+        .list-group__menu
+          =link_to "いいねした商品"
+    .sidebar__title
+      商品を出品する
+      .list-group
+        .list-group__menu
+          =link_to "商品を出品する"
+        .list-group__menu
+          =link_to "出品した商品"
+        .list-group__menu
+          =link_to "自分のショップを見る"
+    .sidebar__title
+      商品を購入する
+      .list-group
+        .list-group__menu
+          =link_to "購入した商品"
+        .list-group__menu
+          =link_to "コメントした商品"
+    .sidebar__title
+      設定
+      .list-group
+        .list-group__menu
+          =link_to "クレジットカードを登録する"
+        .list-group__menu
+          =link_to "お問い合わせ"
+        .list-group__menu
+          =link_to "ログアウト"
+  .right-content
+    .main__title userさんのマイページ
+    

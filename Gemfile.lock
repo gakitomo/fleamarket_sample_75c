@@ -256,6 +256,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport (~> 6.0, >= 6.0.2)
   bootsnap (>= 1.4.2)
   byebug
   capistrano
@@ -282,6 +283,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
+  zeitwerk (~> 2.4)
 
 RUBY VERSION
    ruby 2.5.1p57

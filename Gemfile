@@ -65,3 +65,7 @@ group :production do
 end
 
 gem 'haml-rails'
+
+gem 'activesupport', '~> 6.0', '>= 6.0.2'
+
+gem 'zeitwerk', '~> 2.4'

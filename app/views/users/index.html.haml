@@ -1,19 +1,5 @@
 .header
-  .header__top
-    .header__top--logo
-      = image_tag "logo.png"
-    .header__top--search
-      = text_field_tag :search, "", class:"header__top--search__text", placeholder: "何をお探しですか？"
-      = link_to icon('fas','search'), class:"header__top--search__icon"
-  .header__bottom
-    .header__bottom__search
-      .header__bottom__search--category
-        =link_to "カテゴリから探す"
-      .header__bottom__search--brand
-        =link_to "ブランドから探す"
-    .header__bottom__mypage
-      =link_to image_tag "member_photo_noimage_thumb.png"
-      =link_to "マイページ"
+  = render "header"
 .contents
   .left-content
     .sidebar__title

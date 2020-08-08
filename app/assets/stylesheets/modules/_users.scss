@@ -5,22 +5,25 @@
 .header {
   width: 100%;
   height: 140px;
-  background-color: #eeeeee;
+  background-color: #ffffff;
   border-bottom: 1px solid #777777;
   &__top{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     height: 70px;
     line-height: 70px;
     padding: 20px 5px 0 20px;
+    margin: 0 auto;
     &--logo{
       img{
-      width: 200px;
+      width: 220px;
       height: 50px;
+      padding-left: 20px;
       }
     }
     &--search{
       display: flex;
+      position: relative;
       &__text{
         width: 400px;
         height: 50px;
@@ -39,10 +42,11 @@
   }
   &__bottom{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     height: 60px;
-    padding: 15px 0 5px;
+    padding: 20px 5px 0 20px;
     line-height: 40px;
+    margin: 0 auto;
     a{
       text-decoration: none;
       color: black;
@@ -50,24 +54,33 @@
     &__search{
       display: flex;
       align-items: center;
-      padding: 0 20px;
+      :hover{
+        color: red;
+        transition: 0.5s;
+      }
       &--category{
         padding: 0 20px;
         border-right: 1px solid #777777;
+        display: block;
       }
       &--brand{
         padding: 0 20px;
+        display: block;
       }
     }
     &__mypage{
       display: flex;
-      padding: 0 70px 0 10px;
+      padding: 0 20px 0 10px;
       margin-left: 5px;
+      :hover{
+        color: red;
+        transition: 0.5s;
+      }
       img{
         width: 32px;
         height: 32px;
         margin: 5px;
-        }
+      }
     }
   }
 }
@@ -77,15 +90,18 @@
   height: calc(100vh - 140px);
   .left-content{
     width: 40%;
-    background-color: aquamarine;
+    background-color: white;
     overflow: scroll;
+    padding-top: 15px;
     .sidebar__title{
-      width: 450px;
       font-size: 24px;
       margin: 0 0 10px;
-      padding: 0 10px;
+      padding-bottom: 5px;
+      text-align: center;
       .list-group{
         width: 280px;
+        margin: 0 auto;
+        margin-top: 5px;
         &__menu{
           border: 1px solid #212121;
           background-color: honeydew;
@@ -96,6 +112,7 @@
           a{
             text-decoration: none;
             color: black;
+            display: block;
           }
         }
       }
@@ -103,6 +120,8 @@
   }
   .right-content{
     width: calc(100vw - 40%);
-    background-color: lightgreen;
+    background-color: palegreen;
+    padding: 30px;
+    text-align: center;
   }
 }

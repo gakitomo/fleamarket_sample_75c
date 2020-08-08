@@ -70,3 +70,4 @@ gem 'zeitwerk', '~> 2.4'
 gem 'activesupport', '~> 6.0.0.beta3'
 
 gem 'font-awesome-sass'
+gem 'active_hash'

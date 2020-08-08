@@ -1,0 +1,30 @@
+.wrapper
+  %h1 FIRIMA
+  .items
+    .items__box
+      %p 出品画像
+      .items__box--image
+        = image_tag src="/assets/visa.svg", size: "49x20"
+      %p 画像がありません
+    .items__box
+      %p 商品名
+      %input{:name => "name", :type => "text", class: "items__box--normal"}
+      %p 商品の説明
+      %input{:name => "name", :type => "text", class: "items__box--large"}
+    .items__box
+      %p カテゴリー
+      %input{:name => "name", :type => "text", class: "items__box--normal"}
+      %p ブランド
+      %input{:name => "name", :type => "text", class: "items__box--normal"}
+      %p 商品の状態
+      %input{:name => "name", :type => "text", class: "items__box--normal"}
+    .items__box
+      %p 配送料の負担
+      %input{:name => "name", :type => "text", class: "items__box--normal"}
+      %p 発送元の地域
+      %input{:name => "name", :type => "text", class: "items__box--normal"}
+      %p 発送までの日数
+      %input{:name => "name", :type => "text", class: "items__box--normal"}
+    .items__footer
+      %p ロゴ
+

@@ -9,16 +9,17 @@
   border-bottom: 1px solid #777777;
   &__top{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     height: 70px;
     line-height: 70px;
-    padding: 20px 5px 0 20px;
+    width: auto;
+    max-width: 1400px;
+    padding: 20px 0 0 0;
     margin: 0 auto;
     &--logo{
       img{
-      width: 220px;
+      width: 200px;
       height: 50px;
-      padding-left: 20px;
       }
     }
     &--search{
@@ -27,7 +28,6 @@
       &__text{
         width: 400px;
         height: 50px;
-        margin-right: 10px;
         padding-left: 15px;
       }
       .fas{
@@ -42,40 +42,37 @@
   }
   &__bottom{
     display: flex;
-    justify-content: space-around;
-    height: 60px;
-    padding: 20px 5px 0 20px;
+    justify-content: space-between;
+    height: 70px;
+    width: auto;
+    max-width: 1400px;
+    padding: 20px 0 10px 0;
     line-height: 40px;
     margin: 0 auto;
     a{
       text-decoration: none;
       color: black;
     }
-    &__search{
-      display: flex;
-      align-items: center;
-      :hover{
+    :hover{
         color: red;
         transition: 0.5s;
       }
+    &__search{
+      display: flex;
       &--category{
-        padding: 0 20px;
+        padding-right: 20px;
         border-right: 1px solid #777777;
         display: block;
       }
       &--brand{
-        padding: 0 20px;
+        padding-left: 20px;
         display: block;
       }
     }
     &__mypage{
       display: flex;
-      padding: 0 20px 0 10px;
+      padding-left: 10px;
       margin-left: 5px;
-      :hover{
-        color: red;
-        transition: 0.5s;
-      }
       img{
         width: 32px;
         height: 32px;
@@ -95,8 +92,7 @@
     padding-top: 15px;
     .sidebar__title{
       font-size: 24px;
-      margin: 0 0 10px;
-      padding-bottom: 5px;
+      margin: 0 0 15px;
       text-align: center;
       .list-group{
         width: 280px;
@@ -120,8 +116,22 @@
   }
   .right-content{
     width: calc(100vw - 40%);
-    background-color: palegreen;
-    padding: 30px;
-    text-align: center;
+    background-color: #00eeee;
+    .main__title{
+      font-size: 30px;
+      text-align: center;
+      padding-top: 15px;
+    }
+    .item-list{
+      text-align: center;
+      flex-direction: row;
+      img{
+        width: 150px;
+        height: 150px;
+        margin: 10px;
+        padding: 10px;
+        background-color: #651212;
+      }
+    }
   }
 }

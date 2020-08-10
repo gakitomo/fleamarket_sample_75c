@@ -13,7 +13,7 @@
     height: 70px;
     line-height: 70px;
     width: auto;
-    max-width: 1400px;
+    max-width: 1150px;
     padding: 20px 0 0 0;
     margin: 0 auto;
     &--logo{
@@ -45,7 +45,7 @@
     justify-content: space-between;
     height: 70px;
     width: auto;
-    max-width: 1400px;
+    max-width: 1150px;
     padding: 20px 0 10px 0;
     line-height: 40px;
     margin: 0 auto;
@@ -125,7 +125,9 @@
     .item-list{
       text-align: center;
       flex-direction: row;
+      margin: 0 30px;
       img{
+        margin: 0 auto;
         width: 150px;
         height: 150px;
         margin: 10px;

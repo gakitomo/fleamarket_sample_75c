@@ -1,6 +1,6 @@
 .header__top
   .header__top--logo
-    = image_tag "logo.png"
+    = link_to image_tag "logo.png"
   .header__top--search
     = text_field_tag :search, "", class:"header__top--search__text", placeholder: "何をお探しですか？"
     = link_to icon('fas','search'), class:"header__top--search__icon"

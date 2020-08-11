@@ -86,7 +86,7 @@
   display: flex;
   height: calc(100vh - 140px);
   .left-content{
-    width: 40%;
+    width: 35%;
     background-color: white;
     overflow: scroll;
     padding-top: 15px;
@@ -95,7 +95,7 @@
       margin: 0 0 15px;
       text-align: center;
       .list-group{
-        width: 280px;
+        width: 360px;
         margin: 0 auto;
         margin-top: 5px;
         &__menu{
@@ -115,24 +115,39 @@
     }
   }
   .right-content{
-    width: calc(100vw - 40%);
-    background-color: #00eeee;
+    width: calc(100vw - 35%);
+    background-color: white;
     .main__title{
       font-size: 30px;
       text-align: center;
       padding-top: 15px;
     }
     .item-list{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       text-align: center;
-      flex-direction: row;
-      margin: 0 30px;
-      img{
-        margin: 0 auto;
-        width: 150px;
-        height: 150px;
-        margin: 10px;
-        padding: 10px;
-        background-color: #651212;
+      flex-direction: middle;
+      padding: 0 30px 24px;
+      margin: 0 auto;
+      &__box{
+        width:200px;
+        height: 270px;
+        &--image {
+          margin: 0 auto;
+          width: 160px;
+          height: 160px;
+          margin: 10px 10px 0;
+          padding: 10px;
+          background-color: #651212;
+        }
+        &--text{
+          &--name{
+          }
+          &--price{
+            font-weight: bold;
+          }
+        }
       }
     }
   }

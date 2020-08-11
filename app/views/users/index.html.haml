@@ -29,7 +29,7 @@
       設定
       .list-group
         .list-group__menu
-          =link_to "クレジットカードを登録する"
+          =link_to "クレジットカードを登録・変更する"
         .list-group__menu
           =link_to "お問い合わせ"
         .list-group__menu
@@ -39,10 +39,31 @@
     .main__title
       閲覧した商品
     .item-list
-      =image_tag "icon_camera.png"
-      =image_tag "icon_camera.png"
-      =image_tag "icon_camera.png"
-      =image_tag "icon_camera.png"
-      =image_tag "icon_camera.png"
-      =image_tag "icon_camera.png"
-      =image_tag "icon_camera.png"
+      .item-list__box
+        =image_tag "icon_camera.png", class: "item-list__box--image"
+        .item-list__box--text
+          .item-list__box--text--name
+            カレー
+          .item-list__box--text--price
+            1700円
+      .item-list__box
+        =image_tag "icon_camera.png", class: "item-list__box--image"
+        .item-list__box--text
+          .item-list__box--text--name
+            おにぎり
+          .item-list__box--text--price
+            1700円
+      .item-list__box
+        =image_tag "icon_camera.png", class: "item-list__box--image"
+        .item-list__box--text
+          .item-list__box--text--name
+            ステーキ
+          .item-list__box--text--price
+            1700円
+      .item-list__box
+        =image_tag "icon_camera.png", class: "item-list__box--image"
+        .item-list__box--text
+          .item-list__box--text--name
+            うどん
+          .item-list__box--text--price
+            1700円

@@ -65,4 +65,6 @@ group :production do
 end
 
 gem 'haml-rails'
+
 gem 'devise'
+gem 'active_hash'

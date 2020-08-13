@@ -1,0 +1,69 @@
+.header
+  = render "header"
+.contents
+  .left-content
+    .sidebar__title
+      マイページメニュー
+      .list-group
+        .list-group__menu
+          =link_to "お知らせ"
+        .list-group__menu
+          =link_to "いいねした商品"
+    .sidebar__title
+      商品を出品する
+      .list-group
+        .list-group__menu
+          =link_to "商品を出品する"
+        .list-group__menu
+          =link_to "出品した商品"
+        .list-group__menu
+          =link_to "自分のショップを見る"
+    .sidebar__title
+      商品を購入する
+      .list-group
+        .list-group__menu
+          =link_to "購入した商品"
+        .list-group__menu
+          =link_to "コメントした商品"
+    .sidebar__title
+      設定
+      .list-group
+        .list-group__menu
+          =link_to "クレジットカードを登録・変更する"
+        .list-group__menu
+          =link_to "お問い合わせ"
+        .list-group__menu
+          =link_to root_path do
+            ログアウト
+  .right-content
+    .main__title
+      閲覧した商品
+    .item-list
+      .item-list__box
+        =image_tag "icon_camera.png", class: "item-list__box--image"
+        .item-list__box--text
+          .item-list__box--text--name
+            カレー
+          .item-list__box--text--price
+            1700円
+      .item-list__box
+        =image_tag "icon_camera.png", class: "item-list__box--image"
+        .item-list__box--text
+          .item-list__box--text--name
+            おにぎり
+          .item-list__box--text--price
+            1700円
+      .item-list__box
+        =image_tag "icon_camera.png", class: "item-list__box--image"
+        .item-list__box--text
+          .item-list__box--text--name
+            ステーキ
+          .item-list__box--text--price
+            1700円
+      .item-list__box
+        =image_tag "icon_camera.png", class: "item-list__box--image"
+        .item-list__box--text
+          .item-list__box--text--name
+            うどん
+          .item-list__box--text--price
+            1700円

@@ -1,0 +1,154 @@
+* {
+  box-sizing: border-box;
+}
+
+.header {
+  width: 100%;
+  height: 140px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #777777;
+  &__top{
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    line-height: 70px;
+    width: auto;
+    max-width: 1150px;
+    padding: 20px 0 0 0;
+    margin: 0 auto;
+    &--logo{
+      img{
+      width: 200px;
+      height: 50px;
+      }
+    }
+    &--search{
+      display: flex;
+      position: relative;
+      &__text{
+        width: 400px;
+        height: 50px;
+        padding-left: 15px;
+      }
+      .fas{
+        position: absolute;
+        font-size: 20px;
+        right: 20px;
+        line-height: 50px;
+        text-decoration: none;
+        color: gray;
+      }
+    }
+  }
+  &__bottom{
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    width: auto;
+    max-width: 1150px;
+    padding: 20px 0 10px 0;
+    line-height: 40px;
+    margin: 0 auto;
+    a{
+      text-decoration: none;
+      color: black;
+    }
+    :hover{
+        color: red;
+        transition: 0.5s;
+      }
+    &__search{
+      display: flex;
+      &--category{
+        padding-right: 20px;
+        border-right: 1px solid #777777;
+        display: block;
+      }
+      &--brand{
+        padding-left: 20px;
+        display: block;
+      }
+    }
+    &__mypage{
+      display: flex;
+      padding-left: 10px;
+      margin-left: 5px;
+      img{
+        width: 32px;
+        height: 32px;
+        margin: 5px;
+      }
+    }
+  }
+}
+
+.contents {
+  display: flex;
+  height: calc(100vh - 140px);
+  .left-content{
+    width: 35%;
+    background-color: white;
+    overflow: scroll;
+    padding-top: 15px;
+    .sidebar__title{
+      font-size: 24px;
+      margin: 0 0 15px;
+      text-align: center;
+      .list-group{
+        width: 360px;
+        margin: 0 auto;
+        margin-top: 5px;
+        &__menu{
+          border: 1px solid #212121;
+          background-color: honeydew;
+          margin-bottom: -1px;
+          padding: 10px 15px;
+          font-size: 18px;
+          cursor: pointer;
+          a{
+            text-decoration: none;
+            color: black;
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  .right-content{
+    width: calc(100vw - 35%);
+    background-color: white;
+    .main__title{
+      font-size: 30px;
+      text-align: center;
+      padding-top: 15px;
+    }
+    .item-list{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
+      flex-direction: middle;
+      padding: 0 30px 24px;
+      margin: 0 auto;
+      &__box{
+        width:200px;
+        height: 270px;
+        &--image {
+          margin: 0 auto;
+          width: 160px;
+          height: 160px;
+          margin: 10px 10px 0;
+          padding: 10px;
+          background-color: #651212;
+        }
+        &--text{
+          &--name{
+          }
+          &--price{
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}

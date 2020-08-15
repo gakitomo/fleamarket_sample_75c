@@ -66,8 +66,8 @@ end
 
 gem 'haml-rails'
 
-gem 'activesupport', '~> 6.0', '>= 6.0.2'
-
 gem 'zeitwerk', '~> 2.4'
+gem 'activesupport', '~> 6.0.0.beta3'
 
-gem "font-awesome-sass"
+gem 'font-awesome-sass'
+gem 'active_hash'

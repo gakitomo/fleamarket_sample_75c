@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:family_name_kana])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:given_name_kana])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:birthday])
-    protect_from_forgery with: :null_session
   end
 
   private

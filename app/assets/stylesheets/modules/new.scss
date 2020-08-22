@@ -118,3 +118,109 @@ input{
  p.items__box--back {
    margin-top: 30px;
  }
+
+ //商品購入確認画面
+
+ .wrapper{
+  position: relative;
+  width:100%;
+  height:100%;
+  background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-top: 60px;
+  font-size: 35px;
+  text-align: center;
+img{
+  width:250px;
+  height:80px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  }
+}
+
+
+ .items__check--box{
+   width:375px;
+   height:100px;
+   margin: 0 auto;
+   margin-top: 15px;
+   border-bottom: 2px solid;
+   border-color: #f8f8f8;
+   display: flex;
+ p{
+  margin-bottom: 0px;
+  margin-top: 5px;
+  margin-left: 0px;
+  text-align: center;
+ }
+}
+
+.items{
+  max-width: 700px;
+  height:80%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin: 0 auto;
+&__check{
+  font-size: 15px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 700px;
+&--title{
+  height:30px;
+  font-weight: bold;
+  font-size: 20px; 
+     }
+    }
+}
+
+.items__check--box--image{
+  margin-right: 30px;
+img{
+  width: 80px;
+  height:80px;
+  }
+}
+
+.check{
+  margin-left: 80px;
+  font-size:8px;
+}
+
+.items__check--pay{
+  width:375px;
+  height:50px;
+  margin: 0 auto;
+  margin-top: 0;
+  line-height:10px;
+  border-bottom: 2px solid;
+  border-color: #f8f8f8;
+  display: flex;
+  justify-content: space-between;
+span{
+  font-weight: bold;
+  font-size: 20px;
+  }
+}
+
+.items__check--payment{
+  width:375px;
+  height:45px;
+  margin:0 auto;
+  border-bottom: 2px solid;
+  border-color: #f8f8f8;
+  text-align: left;
+  line-height: 20px;
+p{
+  font-weight: bold;
+  }
+}
+
+
+.items__check--payment a{
+  text-decoration:none;
+  margin-left:10px;
+  color:rgb(0, 149, 238);
+}

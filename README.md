@@ -44,7 +44,6 @@
 |------|----|-------|
 |name|string|null:false|
 |description|text|null:false|
-|category|string|null:false|
 |brand|string||
 |condition|string|null:false|
 |shipping_burden|string|null:false|
@@ -53,17 +52,30 @@
 |shipping_date|integer|null:false|
 |price|integer|null:false|
 |user|references|null:false,foreign_key:true|
+|seller|reference|foreign_key:true|
+|buyer|reference|foreign_key:true|
 
 ### Association
 - belongs_to :user
 - has_many :comments, dependent: :destroy
 - has_many :likes, dependent: :destroy
 - has_many :item_images, dependent: :destroy
+- belongs_to :category
+- belongs_to :seller, class_name: "User"
+- belongs_to :buyer, class_name: "User"
 - belongs_to_active_hash :condition
 - belongs_to_active_hash :shipping_burden
 - belongs_to_active_hash :shipping_method
 - belongs_to_active_hash :prefecture
 
+## category テーブル
+|Column|Type|Options|
+|------|----|-------|
+|category|string|null:false|
+|ancestory|string|null:false|
+
+## Association
+- has_many :items
 
 ## item_imagesテーブル
 |Column|Type|Options|
@@ -74,15 +86,11 @@
 ### Association
 - belongs_to :item
 
-## paymentsテーブル
+## cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|nominee|string|null:false|
-|brand|string|null:false|
-|card_number|integer|null:false,unique:true|
-|expiration_month|integer|null:false|
-|expiration_year|integer|null:false|
-|serurity_code|integer|null:false|
+|customer|string|null:false|
+|card|string|null:false|
 |user|references|null:false,foreign_key:true|
 
 ### Association

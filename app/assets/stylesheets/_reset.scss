@@ -56,7 +56,7 @@ img {
   border:0;
 }
 /*
-  TODO think about handling inheritance differently, maybe letting IE6 fail a bit...
+  TODO think about hanlding inheritence differently, maybe letting IE6 fail a bit...
 */
 address,
 caption,
@@ -117,6 +117,7 @@ input,
 textarea,
 select {
   *font-size:100%;
+  *font-size:100%; /*to enable resizing for IE*/
 }
 /*because legend doesn't inherit in IE */
 legend {
@@ -124,3 +125,4 @@ legend {
 }
 /* YUI CSS Detection Stamp */
 #yui3-css-stamp.cssreset { display: none; }
+

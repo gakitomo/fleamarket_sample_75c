@@ -1,0 +1,91 @@
+.out-frame{
+  text-align: center;
+  background-color: whitesmoke;
+  &__header{
+    width: 300px;
+    height: 100px;
+    line-height: 100px;
+    margin-left: 80px;
+    &--img{
+      height: 50px;
+      width: 175px;
+      vertical-align: middle;
+    }
+  }
+  
+  .new_user{
+    width: 80%;
+    max-width: 80%;
+    margin: 0 auto;
+    background-color: white;
+    &__head{
+      padding: 30px;
+      font-size: 25px;
+      font-weight: bold;
+      border-bottom: 1px solid;
+    }
+    .field{
+      margin-top: 20px;
+      .error-messages{
+        color: red;
+        background-color: pink;
+        
+      }
+      .item{
+        font-size: 20px;
+        margin-bottom: 5px;
+      }
+      .required{
+        background-color: red;
+        height: 30px;
+        color: white;
+        font-size: 15px;
+      }
+      .input-form{
+        padding: 5px 8px;
+        height: 25px;
+        width: 50%;
+        font-size: 18px;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+      }
+      .input-name{
+        width: calc(24% - 3px);
+      }
+      .year,.month,.day{
+        padding: 1px 8px;
+        height: 35px;
+        width: calc(45%/3 - 3px);
+        margin-left: 2px;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+    }
+    .submit-btn{
+      height: 40px;
+      width: 50%;
+      margin: 20px;
+      background-color: red;
+      color: white;
+      border-radius: 4px;
+      border: 0px;
+      cursor: pointer;
+    }
+  }
+  .footer{
+    padding: 60px 0;
+    display: flex;
+    justify-content: center;
+    .render-btn{
+      margin-left: 20px;
+      color: black;
+      text-decoration: none;
+      padding: 10px;
+      border: 1px solid;
+      background-color: whitesmoke;
+      border-radius: 4px;
+    }
+  }
+}
+

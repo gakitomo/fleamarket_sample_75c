@@ -1,2 +1,12 @@
-%h1 Items#index
-%p Find me in app/views/items/index.html.erb
+.image
+  = image_tag 'logo.png', class: "out-frame__header--img"
+  - if user_signed_in?
+    .log-out
+      = link_to "ログアウト", destroy_user_session_path, method: :delete
+    .edit
+      = link_to "編集", edit_user_registration_path
+  - else
+    .log-in
+      = link_to "ログイン", new_user_session_path, class: 'post'
+    .sign-up
+      = link_to "新規会員登録", new_user_registration_path, class: 'post'

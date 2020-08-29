@@ -10,4 +10,6 @@ class User < ApplicationRecord
   validates :family_name_kana, presence: true
   validates :given_name_kana, presence: true
   validates :birthday, presence: true
+
+  has_many :cards, dependent: :destroy
 end

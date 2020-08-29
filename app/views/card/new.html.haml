@@ -1,5 +1,0 @@
-.purchase__body
-  .purchase__body__title
-    = form_with url: item_cards_path(@item.id), method: :post do
-      %script.payjp-button{"data-key" => Rails.application.credentials[:payjp_key], src: "https://checkout.pay.jp/"}
-

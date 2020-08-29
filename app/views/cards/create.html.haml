@@ -1,22 +1,11 @@
-.customer-card
-  %h2 クレジットカード情報
-  .customer-card__content
-    %figure.form_space
-    = image_tag"cards/master_logo.svg",size: "50x30"
-    .customer-card__content__number
-      %h3
-        = "**** **** **** " + @default_card_information.last4
-    .customer-card__content__expired
-      - exp_month = @default_card_information.exp_month.to_s
-      - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
-      %h3
-        = exp_month + " / " + exp_year
-    .customer-card__content__item
-      = link_to purchase_item_path(@item) ,method: :get, class:"customer-card__content__item__link" do
-        支払い方法を選択する
-
-  .customer-card__delete
-    = link_to item_card_path(@item.id, 1), method: :delete, id: 'charge-form',  name: "inputForm", class:"customer-card__delete__link"do
-      削除する 〉
- 
- 
+.create
+  .create__frame
+    .create__frame__message
+      登録が完了しました。
+    %ul.create__frame__btns
+      -# マイページに戻るパスを指定
+      %li.my_page_link
+        = link_to "マイページに戻る", users_path(current_user.id), class: "my_page_link__btn"
+      -# のちに実装する、登録クレジットカード詳細表示(showアクション)に行くパスを指定
+      %li.credit_cards_index_link
+        = link_to "登録カード一覧", credit_card_path(current_user.id), class: "credit_cards_index_link__btn"

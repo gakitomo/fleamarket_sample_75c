@@ -8,7 +8,7 @@ class CardsController < ApplicationController
 
   def create
     # 前回credentials.yml.encに記載したAPI秘密鍵を呼び出します。
-    Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
 
     # 後ほどトークン作成処理を行いますが、そちらの完了の有無でフラッシュメッセージを表示させます。
     if params["payjp_token"].blank?

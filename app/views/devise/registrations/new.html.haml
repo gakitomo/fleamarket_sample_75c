@@ -2,7 +2,7 @@
   .out-frame__header
     = link_to root_path do
       = image_tag 'logo.png', class: "out-frame__header--img"
-  = form_with model: @user,url: user_registration_path ,local: true do |f|
+  = form_with model: @user, local: true, url: user_registration_path do |f|
     .new_user 会員情報入力
     .field
       = render "devise/shared/error_messages", resource: resource

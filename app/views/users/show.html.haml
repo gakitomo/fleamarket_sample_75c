@@ -23,8 +23,8 @@
     .items__check
       .items__check--payment
         %p 支払い方法
-        
-        %a{:href => ""}   ＋ 登録してください
+        =link_to new_card_path do
+          ＋ 登録してください
   .items
     .items__check
       .items__check--payment
@@ -33,7 +33,8 @@
 
   .items
     .items__check
-      %input{name: "brand", type: "submit", class: "submit-box",value:"購入する"}
+      =link_to root_path do
+        %input{name: "brand", type: "submit", class: "submit-box",value:"トップページに戻る"}
   
   
       

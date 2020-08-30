@@ -12,4 +12,11 @@
       =link_to "ブランドから探す"
   .header__bottom__mypage
     =link_to image_tag "member_photo_noimage_thumb.png"
-    =link_to "ログイン", new_user_session_path, class: 'login'
+    - if user_signed_in?
+      -#.user_nav
+      -#     =link_to "ログアウト", destroy_user_session_path, method: :delete
+      -#     =link_to "マイページ", users_path
+      -# - else
+      .user_nav
+        =link_to "ログイン", new_user_session_path, class:"post"
+        =link_to "新規登録", new_user_registration_path, class:"post"

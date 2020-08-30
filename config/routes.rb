@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => {
-    :registrations => 'users/registrations'
+  devise_for :users, controllers:{
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
   }
+  get    '/sign_in',   to: 'sessions#new'
+  post   '/sign_in',   to: 'sessions#create'
+  delete '/sign_out',  to: 'sessions#destroy'
 
   root 'items#index'
 

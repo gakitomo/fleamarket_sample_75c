@@ -53,6 +53,7 @@
       セキュリティコード
       %span.need 必須
     = text_field_tag "cvc", "", class: "cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc"
-    .card-question カード裏面の番号とは？
+    .card-question
+      %a{:href => ""}カード裏面の番号とは？
     .add
       = submit_tag "登録する", class: "add__btn", id: "payment_card_submit-button"

@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   private
+  
 
   def production?
     Rails.env.production?
@@ -26,4 +27,5 @@ class ApplicationController < ActionController::Base
       password == Rails.application.credentials[:basic_auth][:pass]
     end
   end
+  
 end

@@ -3,23 +3,23 @@
 %nav.breadCrumbs
   %ul
     %li
-      %a{ href: '/'}FURIMA
+      = link_to "FURIMA", "items"
     %li
       %i.fa.fa-angle-right
     %li
-      %a{ href: '#'}ベビー、キッズ
+      = link_to "ベビー、キッズ", "items"
     %li
       %i.fa.fa-angle-right
     %li
-      %a{ href: '#'}ベビー服(男女兼用) ~95cm
+      = link_to "ベビー服(男女兼用) ~95cm", "items"
     %li
       %i.fa.fa-angle-right
     %li
-      %a{ href: '#'}アウター
+      = link_to "アウター", "items"
     %li
       %i.fa.fa-angle-right
     %li
-      %a{ href: '#'}product3
+      = link_to "product3", "items"
 
 .main
   .showmain
@@ -31,14 +31,14 @@
           .itemBox__body
             %ul
               %li
-                %img{src: "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"}/
+                = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
                 %ul
                   %li
-                    %img{height: "75", src: "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", :width => "75"}/
+                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
                   %li
-                    %img{height: "75", src: "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png", :width => "75"}/
+                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png"
                   %li
-                    %img{height: "75", src: "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png", :width => "75"}/
+                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png"
           .itemBox__price
             %span.digit
               ¥30000
@@ -58,11 +58,11 @@
                 %tr
                   %th カテゴリー
                   %td
-                    %a{ href: '#'}ベビー、キッズ
+                    = link_to "ベビー、キッズ", "items"
                     %br
-                    %a{ href: '#'}ベビー服(男女兼用) ~95cm
+                    = link_to "ベビー服(男女兼用) ~95cm", "items"
                     %br
-                    %a{ href: '#'}アウター
+                    = link_to "アウター", "items"
                 %tr
                   %th ブランド
                   %td
@@ -78,7 +78,8 @@
                 %tr
                   %th 発送元の地域
                   %td
-                    %a{ href: '#'}岩手県
+                    = link_to "岩手県", "items"
+
                 %tr
                   %th 発送日の目安
                   %td 4-7日で発送
@@ -131,12 +132,11 @@
         %a{ href: '#'} ベビー・キッズをもっと見る
         .productLists
           .productList
-            %a{href: "/products/8"} 
-              %figure.productList-image
-                %img{src: "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/16/IMG_9072.JPG"}/
-              .productList--body
-                %h3.name ee
-                .detail
+            = link_to image_tag('https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/16/IMG_9072.JPG', 
+            class: "productList-image") do
+              -# .productList--body
+              -#   %h3.name ee
+              -#   .detail
                   %ul
                     %li 1000円
                     %li.likeIcon

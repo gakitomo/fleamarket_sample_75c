@@ -3,10 +3,9 @@
     %h2.inner__title だれでもかんたん、人生を変えるフリマアプリ
     %p.inner__text 今すぐ無料ダウンロード
     .inner__icon
-      %a.apple{ href: '#'}
-        = image_tag "Download_on_the_App_Store_Badge_JP_RGB_blk_100317.svg"
-      %a.google{href: '#'}
-        = image_tag "google-play-badge.png"
+      = link_to image_tag('Download_on_the_App_Store_Badge_JP_RGB_blk_100317.svg', class: "apple"), 'items'
+      = link_to image_tag('google-play-badge.png', class: "google"), 'items'
+
 
 
 .footer
@@ -15,34 +14,33 @@
       %h2.content__head FURIMAについて
       %ul
         %li
-          %a{ href: '#'} 会社概要
+          = link_to "会社概要", "items"
         %li
-          %a{ href: '#'} プライバシーポリシー
+          = link_to "プライバシーポリシー", "items"
         %li
-          %a{ href: '#'} FURIMA利用規約
+          = link_to "FURIMA利用規約", "items"
         %li
-          %a{ href: '#'} ポイントに関する特約
+          = link_to "ポイントに関する特約", "items"
         
     %li.content
       %h2.content__head FURIMAを見る
       %ul
         %li
-          %a{ href: '#'} カテゴリー一覧
+          = link_to "カテゴリー一覧", "items"
         %li
-          %a{ href: '#'} ブランド一覧
+          = link_to "ブランド一覧", "items" 
 
     %li.content
       %h2.content__head ヘルプ＆ガイド
       %ul
         %li
-          %a{ href: '#'} FURIMAガイド
+          = link_to "FURIMAガイド", "items"
         %li
-          %a{ href: '#'} FURIMAロゴ利用ガイドライン
+          = link_to "FURIMAロゴ利用ガイドライン", "items"
         %li
-          %a{ href: '#'} お知らせ
+          = link_to "お知らせ", "items"
   .footer__logo
-    %a{ href: '#'}
-      = image_tag "logo-white.png"
+    = link_to image_tag('logo-white.png'), 'items'
     %p © FURIMA
 
   %a{ href:'#'}

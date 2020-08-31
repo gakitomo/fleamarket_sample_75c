@@ -6,12 +6,13 @@ class ApplicationController < ActionController::Base
   protected  
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:family_name])
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:given_name])
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:family_name_kana])
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:given_name_kana])
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:birthday])
+    # strong parametersを設定し、user_idを許可
+    devise_parameter_sanitizer.for(:sign_up){|u|
+        u.permit(:user_id, :password, :password_confirmation)
+    }
+    devise_parameter_sanitizer.for(:sign_in){|u|
+        u.permit(:user_id, :password, :remember_me)
+    }
   end
 
   private

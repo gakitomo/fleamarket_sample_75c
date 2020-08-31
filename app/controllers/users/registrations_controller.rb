@@ -4,7 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   before_action :create, only: [:complete]
 
-  def confirm 
+  def create
     @user = User.new(sign_up_params)
     if @user.valid?
       render :action => 'confirm'

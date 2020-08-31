@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users, controllers:{
-    registrations: 'users/registrations',
-    sessions: 'users/sessions'
+    # registrations: 'users/registrations',
+    # sessions: 'users/sessions'
   }
-  get    '/sign_in',   to: 'sessions#new'
-  post   '/sign_in',   to: 'sessions#create'
-  delete '/sign_out',  to: 'sessions#destroy'
+  devise_scope :user do
+    get "sign_in", :to => "users/sessions#new"
+    get "sign_out", :to => "users/sessions#destroy" 
+  end
+  # get    '/sign_in',   to: 'sessions#new'
+  # post   '/sign_in',   to: 'sessions#create'
+  # delete '/sign_out',  to: 'sessions#destroy'
 
   root 'items#index'
 

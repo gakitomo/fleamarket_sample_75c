@@ -1,35 +1,52 @@
 class CardsController < ApplicationController
-  require "payjp" #PAYJPとやり取りするために、payjpをロード
+
+  require "payjp"
 
   def new
     card = Card.where(user_id: current_user.id)
-    redirect_to card_path(current_user.id) if card.exists?
+    redirect_to action: "show" if card.exists?
   end
 
-  def create
-    # 前回credentials.yml.encに記載したAPI秘密鍵を呼び出します。
+  def pay #payjpとCardのデータベース作成を実施します。
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-
-    # 後ほどトークン作成処理を行いますが、そちらの完了の有無でフラッシュメッセージを表示させます。
-    if params["payjp_token"].blank?
-      redirect_to action: "new", alert: "クレジットカードを登録できませんでした。"
+    if params['payjp-token'].blank?
+      redirect_to action: "new"
     else
-    # 無事トークン作成された場合のアクション(こっちが本命のアクション)
-    # まずは生成したトークンから、顧客情報と紐付け、PAY.JP管理サイトに登録
       customer = Payjp::Customer.create(
-        email: current_user.email,
-        card: params["payjp_token"],
-        metadata: {user_id: current_user.id} #最悪なくてもOK！
-      )
-      # 今度はトークン化した情報を自アプリのCredit_cardsテーブルに登録！
-      @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
-      # 無事、トークン作成とともにcredit_cardsテーブルに登録された場合、createビューが表示されるように条件分岐
+      description: '登録テスト', #なくてもOK
+      email: current_user.email, #なくてもOK
+      card: params['payjp-token'],
+      metadata: {user_id: current_user.id}
+      ) #念の為metadataにuser_idを入れましたがなくてもOK
+      @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        #もしcreateビューを作成しない場合はredirect_toなどで表示ビューを指定
+        redirect_to action: "show"
       else
-        redirect_to action: "create"
+        redirect_to action: "pay"
       end
     end
   end
 
+  def delete #PayjpとCardデータベースを削除します
+    card = Card.where(user_id: current_user.id).first
+    if card.blank?
+    else
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      customer.delete
+      card.delete
+    end
+      redirect_to action: "new"
+  end
+
+  def show #Cardのデータpayjpに送り情報を取り出します
+    card = Card.where(user_id: current_user.id).first
+    if card.blank?
+      redirect_to action: "new" 
+    else
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @default_card_information = customer.cards.retrieve(card.card_id)
+    end
+  end
 end

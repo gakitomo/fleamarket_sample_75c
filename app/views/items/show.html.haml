@@ -90,7 +90,7 @@
                 お気に入り 0
             %ul.optional
               %li.optionalBtn
-                %a{ href: '#'}
+                = link_to "#" do
                   %i.fa.fa-flag
                   不適切な商品の通報
         .commentBox
@@ -118,25 +118,25 @@
 
       %ul.links
         %li.before
-          %a{ href: '#'} 
+          = link_to "#" do 
             %i.fa.fa-angle-left
             %span
               前の商品
         %li.next
-          %a{ href: '#'} 
+          = link_to "#" do 
             %span
               後ろの商品
               %i.fa.fa-angle-right
 
       .relatedItems
-        %a{ href: '#'} ベビー・キッズをもっと見る
+        = link_to "ベビー・キッズをもっと見る", "items"
         .productLists
           .productList
-            = link_to image_tag('https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/16/IMG_9072.JPG', 
-            class: "productList-image") do
-              -# .productList--body
-              -#   %h3.name ee
-              -#   .detail
+            = link_to "#" do
+              = image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/16/IMG_9072.JPG", class: "productList-image")
+              .bodyText
+                %h3.nameText ee
+                .detail
                   %ul
                     %li 1000円
                     %li.likeIcon

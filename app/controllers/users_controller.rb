@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find_by(id: params[:id])
   end
   
   def edit
@@ -27,6 +28,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:id]) #特定のidを持つ情報を取得
+    @user.destroy
+    redirect_to :root #削除に成功すればrootページに戻る
   end
 
   private

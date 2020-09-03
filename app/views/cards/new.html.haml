@@ -7,7 +7,7 @@
       カード番号
       %span.require
         必須
-    = f.text_field :number, name:"number", class: 'input-default', placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
+    = f.text_field :number, name:"number", id: "number", class: 'input-default', placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
     .brands
       .image
         = image_tag(image_path('cards/visa.gif'), class: 'visa')
@@ -29,6 +29,6 @@
       セキュリティコード
       %span.require
         必須
-    = text_field_tag "cvc", "", class: "input-default", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc"
+    = f.text_field :cvc, name:"cvc", id:"cvc", class: "input-default", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc"
   .card_token
-    = submit_tag "追加する", class: "card_submit"
+    = submit_tag "追加する", class: "card_submit", id: "charge-form"

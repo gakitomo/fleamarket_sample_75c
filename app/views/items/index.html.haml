@@ -3,8 +3,6 @@
   - if user_signed_in?
     .log-out
       = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'
-    .edit
-      = link_to "編集", edit_user_registration_path, class: 'btn'
   - else
     .log-in
       = link_to "ログイン", new_user_session_path, class: 'btn post'

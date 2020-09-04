@@ -2,22 +2,31 @@
   .out-frame__header
     = link_to root_path do
       = image_tag 'logo.png', class: "out-frame__header--img"
-  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    %h2.new_user__head  ログイン
-    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      .field
-        .item
-          = f.label "メールアドレス"
-        = f.email_field :email, autocomplete: "email", placeholder:"携帯・PCどちらでも", class: "input-form"
-      .field
-        .item
-          = f.label "パスワード"
-        = f.password_field :password, placeholder: "#{@minimum_password_length}文字以上の半角英数字", autocomplete: "new-password", class: "input-form"
-      - if devise_mapping.rememberable?
+  = form_with model: resource, as: resource_name, local: true, url: session_path(resource_name) do |f|
+    .new_user
+      %h2.new_user__head  ログイン
+      .user_form
         .field
-          = f.check_box :remember_me
-          = f.label :remember_me
-      .actions
-        = f.submit "ログイン", class: "submit-btn"
+          .item
+            = f.label "メールアドレス"
+          = f.email_field :email, autocomplete: "email", placeholder:"携帯・PCどちらでも", class: "input-form"
+          - if resource.errors.include?(:email)
+            .error-message
+              = resource.errors.full_messages_for(:email).first
+
+        .field
+          .item
+            = f.label "パスワード"
+          = f.password_field :password, placeholder: "#{@minimum_password_length}文字以上の半角英数字", autocomplete: "new-password", class: "input-form"
+          - if resource.errors.include?(:password)
+            .error-message
+              = resource.errors.full_messages_for(:password).first
+
+        - if devise_mapping.rememberable?
+          .field
+            = f.check_box :remember_me
+            = f.label :remember_me
+        .actions
+          = f.submit "ログイン", class: "submit-btn"
   .footer
     = render "devise/shared/links"

@@ -14,9 +14,11 @@
  *= require_self
  */
 
- @import "reset";
- @import "modules/item_detail";
- @import "modules/items";
- @import "modules/new";
- @import "font-awesome-sprockets";
- @import "font-awesome";
+@import "reset";
+@import "modules/new";
+@import "modules/devise";
+@import "modules/item_detail";
+@import "modules/items";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+

@@ -1,34 +1,34 @@
 .title
   クレジットカード情報入力
 
-= form_with url:pay_cards_path, method: :post, html:{name: "inputForm"}, class:"form" do |f|
-  .card__number
-    .card__number__title
-      カード番号
-      %span.require
-        必須
-    = f.text_field :number, name:"number", id: "number", class: 'input-default', placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
-    .brands
+= form_with model: @card, method: :post, html: { name: "inputForm" },class:"form" do |f|
+  .form__upper
+    .form__upper__group
+      = f.label :カード番号
+      %span.form-require 必須
+      = f.text_field :card_number, name: "card_number", id:"card_number", type: "text", placeholder: '半角数字のみ', class: 'input-default', maxlength: "16"
       .image
-        = image_tag(image_path('cards/visa.gif'), class: 'visa')
-        = image_tag(image_path('cards/mastercard.gif'), class: 'master')
-        = image_tag(image_path('cards/jcb.gif'), class: 'jcb')
-        = image_tag(image_path('cards/amex.gif'), class: 'amex')
-        = image_tag(image_path('cards/diners.gif'), class: 'diners')
-  .expiration
-    .expiration__title
-      有効期限
-      %span.require
-        必須
-    = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{}, class: 'input-default harf', name: "exp_month", id:"exp_month"
-    %span 月/
-    = f.select :exp_year, [["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029],["30",2030]],{}, class: 'input-default harf', name: "exp_year", id:"exp_year"
-    %span 年
-  .security__code
-    .security__code__title
-      セキュリティコード
-      %span.require
-        必須
-    = f.text_field :cvc, name:"cvc", id:"cvc", class: "input-default", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc"
-  .card_token
-    = submit_tag "追加する", class: "card_submit", id: "charge-form"
+      = image_tag(image_path('cards/visa.gif'), class: 'visa')
+      = image_tag(image_path('cards/mastercard.gif'), class: 'master')
+      = image_tag(image_path('cards/jcb.gif'), class: 'jcb')
+      = image_tag(image_path('cards/amex.gif'), class: 'amex')
+      = image_tag(image_path('cards/diners.gif'), class: 'diners')
+    .form__upper__group.exp
+      .name
+        = f.label :有効期限
+        %span.form-require 必須
+      = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{}, class: 'input-default harf', name: "exp_month", id:"exp_month"
+      %span 月/
+      = f.select :exp_year, [["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029],["30",2030]], {}, class: 'input-default harf', name: "exp_year", id:"exp_year"
+      %span 年
+    .form__upper__group
+      = f.label :セキュリティーコード
+      %span.form-require 必須
+      = f.text_field :cvc, name: "cvc", id:"cvc", class:"cvc", type: "text", placeholder: 'カード背面4桁もしくは3桁の番号', class: 'input-default', maxlength: "16"
+    .form__upper__group
+      %p.about
+        =icon('fa','question-circle')
+        %span
+        = link_to 'カード裏面の番号とは？', root_path, class:'about__registered'
+    .form__upper__group
+      = f.submit "登録する", class: 'btn-default', id: "charge-form"

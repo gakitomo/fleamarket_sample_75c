@@ -11,14 +11,14 @@ class User < ApplicationRecord
   end
 
   # ユーザーのアカウントが有効であることを確認 
-  def active_for_authentication?  
-    super && !deleted_at  
-  end  
+  # def active_for_authentication?  
+  #   super && !deleted_at  
+  # end  
 
   # 削除したユーザーにカスタムメッセージを追加します  
-  def inactive_message   
-    !deleted_at ? super : :deleted_account  
-  end 
+  # def inactive_message   
+  #   !deleted_at ? super : :deleted_account  
+  # end 
 
   validates :nickname, presence: true
   validates :family_name, presence: true
@@ -27,5 +27,5 @@ class User < ApplicationRecord
   validates :given_name_kana, presence: true
   validates :birthday, presence: true
 
-  has_many :cards, dependent: :destroy
+  has_one :card, dependent: :destroy
 end

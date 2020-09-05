@@ -1,0 +1,153 @@
+.header
+  = render "header.html.haml"
+%nav.breadCrumbs
+  %ul
+    %li
+      = link_to "FURIMA", "items"
+    %li
+      %i.fa.fa-angle-right
+    %li
+      = link_to "ベビー、キッズ", "items"
+    %li
+      %i.fa.fa-angle-right
+    %li
+      = link_to "ベビー服(男女兼用) ~95cm", "items"
+    %li
+      %i.fa.fa-angle-right
+    %li
+      = link_to "アウター", "items"
+    %li
+      %i.fa.fa-angle-right
+    %li
+      = link_to "product3", "items"
+
+.main
+  .showmain
+    .contentLeftqq
+    .contentRight
+      .topContent
+        .itemBox
+          %h2.itemBox__name product3
+          .itemBox__body
+            %ul
+              %li
+                = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
+                %ul
+                  %li
+                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
+                  %li
+                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png"
+                  %li
+                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png"
+          .itemBox__price
+            %span.digit
+              ¥30000
+            .itemBox__price-detail
+              %span
+                (税込み)
+              %span
+                (送料込み)
+          .itemDetail
+            親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+          .table
+            %table
+              %tbody
+                %tr
+                  %th 出品者
+                  %td hoge
+                %tr
+                  %th カテゴリー
+                  %td
+                    = link_to "ベビー、キッズ", "items"
+                    %br
+                    = link_to "ベビー服(男女兼用) ~95cm", "items"
+                    %br
+                    = link_to "アウター", "items"
+                %tr
+                  %th ブランド
+                  %td
+                %tr
+                  %th 商品のサイズ
+                  %td
+                %tr
+                  %th 商品の状態
+                  %td 未使用に近い
+                %tr
+                  %th 配送料の負担
+                  %td 送料込み(出品者負担)
+                %tr
+                  %th 発送元の地域
+                  %td
+                    = link_to "岩手県", "items"
+
+                %tr
+                  %th 発送日の目安
+                  %td 4-7日で発送
+          .optionalArea
+            %ul
+              %li#likeBtn.optionalBtn.likeBtn
+                %i.fa.fa-star
+                お気に入り 0
+            %ul.optional
+              %li.optionalBtn
+                = link_to "#" do
+                  %i.fa.fa-flag
+                  不適切な商品の通報
+        .commentBox
+          %ul.commentContents
+            %form#new_comment.new_comment
+              %textarea#comment_body{name: "comment[body]", required: "required"}
+              %p.noticeMsg
+                相手のことを考え丁寧なコメントを心がけましょう
+                %br
+                不快な言葉遣いなどは利用制限や退会処分となることがあります
+              %button.commentBtn{name: "button", type: "submit"}
+                %i.fa.fa-comment
+                  コメントする
+              -# = form_for [@comment],html: {class: 'new__comment' } do |f|
+                = f.text_field :content, class: 'commnet__body'
+                %p.noticeMsg
+                  "相手のことを考え丁寧なコメントを心がけましょう"
+                  %br
+                  "不快な言葉遣いなどは利用制限や大会処分となることがあります"
+                = f.submit 'Send', class: 'commentBtn'
+                  = icon('fa', 'comment', class: "commentBtn")
+                    コメントする
+                
+                  
+
+      %ul.links
+        %li.before
+          = link_to "#" do 
+            %i.fa.fa-angle-left
+            %span
+              前の商品
+        %li.next
+          = link_to "#" do 
+            %span
+              後ろの商品
+              %i.fa.fa-angle-right
+
+      .relatedItems
+        = link_to "ベビー・キッズをもっと見る", "items"
+        .productLists
+          .productList
+            = link_to "#" do
+              = image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/16/IMG_9072.JPG", class: "productList-image")
+              .bodyText
+                %h3.nameText ee
+                .detail
+                  %ul
+                    %li 1000円
+                    %li.likeIcon
+                      %i.fa.fa-star 0
+                  %p 税込み
+
+= render partial: "fotter.html.haml"
+
+
+
+
+
+
+

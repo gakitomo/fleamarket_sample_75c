@@ -84,7 +84,7 @@
       }
     }
   }
-  .footer{
+  &__footer{
     padding: 60px 0;
     display: flex;
     justify-content: center;
@@ -96,6 +96,9 @@
       border: 1px solid;
       background-color: whitesmoke;
       border-radius: 4px;
+    }
+    &__logo{
+      background-color: black;
     }
   }
 }

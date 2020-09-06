@@ -11,5 +11,5 @@ class User < ApplicationRecord
   validates :given_name_kana, presence: true
   validates :birthday, presence: true
 
-  has_many :items
+  has_many :items, dependent: :destroy
 end

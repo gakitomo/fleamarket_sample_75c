@@ -3,27 +3,30 @@ class CardsController < ApplicationController
   before_action :set_card
 
   def index
-    if @card.present?
+    @card = Card.find_by(user_id: current_user.id)
+    if @card.blank?
+      redirect_to action: "new" 
+    else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(@card.payjp_id)
-
+      customer = Payjp::Customer.retrieve(@card.customer_id)
       @card_info = customer.cards.retrieve(customer.default_card)
       @card_brand = @card_info.brand
-      @exp_month = @card_info.exp_month.to_s
-      @exp_year = @card_info.exp_year.to_s.slice(2,3) 
-
       case @card_brand
       when "Visa"
-        @card_image = "cards/visa.gif"
+        @card_src = image_tag(image_path('cards/visa.gif'), class: 'visa')
       when "JCB"
-        @card_image = "cards/jcb.gif"
+        @card_src = "jcb.gif"
       when "MasterCard"
-        @card_image = "cards/mastercard.gif"
+        @card_src = "mastercard.gif"
       when "American Express"
-        @card_image = "cards/amex.gif"
+        @card_src = "amex.gif"
       when "Diners Club"
-        @card_image = "cards/diners.gif"
+        @card_src = "diners.gif"
       end
+      ## 有効期限'月'を定義
+      @exp_month = @card_info.exp_month.to_s
+      ## 有効期限'年'を定義
+      @exp_year = @card_info.exp_year.to_s.slice(2,3)
     end
   end
 
@@ -57,13 +60,11 @@ class CardsController < ApplicationController
   end
 
   def show
-    # ログイン中のユーザーのクレジットカード登録の有無を判断
     @card = Card.find_by(user_id: current_user.id)
     if @card.blank?
-      # 未登録なら新規登録画面に
       redirect_to action: "new" 
     else
-      Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_PRIVATE_KEY)
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @customer_card = customer.cards.retrieve(@card.card_id)
       @card_brand = @customer_card.brand
@@ -99,34 +100,34 @@ class CardsController < ApplicationController
     end
   end
 
-  def buy
-    @product = Product.find(params[:product_id])
+  # def buy
+  #   @product = Product.find(params[:product_id])
    
-    if @product.buyer.present? 
-      redirect_back(fallback_location: root_path) 
-    elsif @card.blank?
+  #   if @product.buyer.present? 
+  #     redirect_back(fallback_location: root_path) 
+  #   elsif @card.blank?
       
-      redirect_to action: "new"
-      flash[:alert] = '購入にはクレジットカード登録が必要です'
-    else
+  #     redirect_to action: "new"
+  #     flash[:alert] = '購入にはクレジットカード登録が必要です'
+  #   else
       
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+  #     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       
-      Payjp::Charge.create(
-      amount: @product.price,
-      customer: @card.customer_id,
-      currency: 'jpy',
-      )
+  #     Payjp::Charge.create(
+  #     amount: @product.price,
+  #     customer: @card.customer_id,
+  #     currency: 'jpy',
+  #     )
       
-      if @product.update(buyer_id: current_user.id)
-        flash[:notice] = '購入しました。'
-        redirect_to controller: 'products', action: 'show', id: @product.id
-      else
-        flash[:alert] = '購入に失敗しました。'
-        redirect_to controller: 'products', action: 'show', id: @product.id
-      end
-    end
-  end
+  #     if @product.update(buyer_id: current_user.id)
+  #       flash[:notice] = '購入しました。'
+  #       redirect_to controller: 'products', action: 'show', id: @product.id
+  #     else
+  #       flash[:alert] = '購入に失敗しました。'
+  #       redirect_to controller: 'products', action: 'show', id: @product.id
+  #     end
+  #   end
+  # end
 
   private
   def set_card

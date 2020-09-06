@@ -22,3 +22,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :new
     end
   end
+end

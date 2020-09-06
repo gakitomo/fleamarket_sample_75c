@@ -34,5 +34,4 @@ class Category < ActiveHash::Base
       {id: 12, name: '自動車、オートバイ'},
       {id: 13, name: 'その他'}
   ]
-  has_ancestry
 end

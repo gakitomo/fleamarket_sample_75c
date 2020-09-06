@@ -10,16 +10,6 @@ class User < ApplicationRecord
     update_attribute(:deleted_at, Time.current)  
   end
 
-  # ユーザーのアカウントが有効であることを確認 
-  # def active_for_authentication?  
-  #   super && !deleted_at  
-  # end  
-
-  # 削除したユーザーにカスタムメッセージを追加します  
-  # def inactive_message   
-  #   !deleted_at ? super : :deleted_account  
-  # end 
-
   validates :nickname, presence: true
   validates :family_name, presence: true
   validates :given_name, presence: true

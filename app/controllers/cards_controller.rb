@@ -50,9 +50,9 @@ class CardsController < ApplicationController
       
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        redirect_to action: "create"
+        redirect_to action: "create", notice: "カードを登録しました"
       else
-        redirect_to action: "new"
+        redirect_to action: "new", alert: "カードを登録できませんでした"
       end
     end
   end
@@ -87,17 +87,14 @@ class CardsController < ApplicationController
 
   def destroy     
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    
     customer = Payjp::Customer.retrieve(@card.customer_id)
     customer.delete # PAY.JPの顧客情報を削除
     if @card.destroy # App上でもクレジットカードを削除
-      redirect_to action: "index", alert: "削除しました"
+      redirect_to action: "index", notice: "削除しました"
     else
       redirect_to action: "index", alert: "削除できませんでした"
     end
   end
-
-
 
   private
   def set_card

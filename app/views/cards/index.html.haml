@@ -12,8 +12,13 @@
   .menu
     = button_to "削除する", card_path(@card), method: :delete, class: "card__btn"
     = button_to "マイページに戻る", users_path, method: :get, class: "card__btn"
-- else
-  .new-card
-    = link_to new_card_path, class:"new-card-btn" do
-      %i.far.fa-credit-card 
-      クレジットカードを追加する
+-# - else
+  -# .new-card
+  -#   = link_to new_card_path, class:"card__btn" do
+  -#     %i.far.fa-credit-card 
+  -#     クレジットカードを登録する
+  -#     %ul.destroy__frame__btns
+  -#   %li.credit_card_new_link
+  -#     = link_to "クレジットカード新規登録", cards_path, class: "card__btn"
+  -#   %li.my_page_link
+  -#     = link_to "マイページに戻る", users_path(current_user.id), class: "card__btn"

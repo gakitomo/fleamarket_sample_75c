@@ -34,9 +34,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    # PAY.JPの秘密鍵をセット（環境変数）
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    
     if params['payjpToken'].blank?
       render "new"
     else
@@ -46,7 +44,6 @@ class CardsController < ApplicationController
         card: params['payjpToken'],
         metadata: {user_id: current_user.id}
       )
-      
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
         redirect_to action: "create", notice: "カードを登録しました"
@@ -59,9 +56,9 @@ class CardsController < ApplicationController
   def destroy     
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     customer = Payjp::Customer.retrieve(@card.customer_id)
-    customer.delete # PAY.JPの顧客情報を削除
+    customer.delete
     @card.delete
-    if @card.destroy # App上でもクレジットカードを削除
+    if @card.destroy
       redirect_to action: "destroy", notice: "削除しました"
     else
       redirect_to card_path(current_user.id), alert: "削除できませんでした"

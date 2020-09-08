@@ -5,4 +5,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_area
   belongs_to_active_hash :shipping_burden
   belongs_to_active_hash :shipping_method
+
+
+  mount_uploaders :images, ImageUploader
 end

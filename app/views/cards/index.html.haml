@@ -5,7 +5,7 @@
     .card__brand
       = image_tag "#{@card_src}", alt:'card_brand'
     .card__number
-      = "**** **** **** " + @card_info.last4 #クレジットカードの下４桁を表示
+      = "**** **** **** " + @card_info.last4
     .card__expiration
       有効期限 :
       = @exp_month + " / " + @exp_year

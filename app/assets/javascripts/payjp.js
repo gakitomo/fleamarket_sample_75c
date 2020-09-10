@@ -1,7 +1,6 @@
 $(document).on('turbolinks:load',function(){
   
   Payjp.setPublicKey('pk_test_9a6da8909dfeab92eef15147');
-  // console.log("check")
   let form = $(".form");
 
   $("#charge-form").click(function() {
@@ -18,12 +17,10 @@ $(document).on('turbolinks:load',function(){
     
     Payjp.createToken(card, function(status, response) {
       if (response.error){
-        // cossole.log(response.error.message);
         form.find('.payment-errors').text(response.error.message);
         form.find('button').prop('disabled', false);
       }   
       else {
-        // console.log(response.status);
         $("#card_number").removeAttr("name");
         $("#cvc").removeAttr("name");
         $("#exp_month").removeAttr("name");

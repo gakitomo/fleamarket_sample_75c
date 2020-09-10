@@ -34,7 +34,8 @@
         .list-group__menu
           =link_to "お問い合わせ"
         .list-group__menu
-          =link_to "ログアウト", destroy_user_session_path, method: :delete
+          =link_to destroy_user_session_path, method: :delete do
+            ログアウト
   .right-content
     .main__title
       閲覧した商品

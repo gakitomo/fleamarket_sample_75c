@@ -21,6 +21,22 @@ ActiveRecord::Schema.define(version: 2020_08_25_133654) do
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "category_id"
+    t.string "brand"
+    t.integer "condition_id"
+    t.integer "shipping_burden_id"
+    t.integer "shipping_method_id"
+    t.integer "shipping_area_id"
+    t.integer "shipping_date"
+    t.integer "price"
+    t.integer "user", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -39,9 +55,5 @@ ActiveRecord::Schema.define(version: 2020_08_25_133654) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "items", "users"
-    t.integer "user", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+  add_foreign_key "cards", "users"
 end

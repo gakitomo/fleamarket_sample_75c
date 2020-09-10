@@ -15,7 +15,7 @@
   font-size: 35px;
   text-align: center;
 img{
-  width:250px;
+  // width:250px;
   height:80px;
   margin: 0 auto;
   }
@@ -87,6 +87,12 @@ input{
   border-radius: 10px;
 }
 
+.parent--category{
+  width:500px;
+  height:40px;
+  border-radius: 10px;
+}
+
 .items__box--large{
   width:500px;
   height:150px;
@@ -133,7 +139,7 @@ input{
   font-size: 35px;
   text-align: center;
 img{
-  width:250px;
+  // width:250px;
   height:80px;
   margin: 0 auto;
   margin-bottom: 30px;
@@ -223,4 +229,51 @@ p{
   text-decoration:none;
   margin-left:10px;
   color:rgb(0, 149, 238);
+}
+
+.item_input__body__category#category_box{
+    width:500px;
+    height:40px;
+    border-radius: 10px;
+}
+
+// .pulldown#partent_box{
+//   max-width: 700px;
+//   height:80%;
+//   background-color: #ffffff;
+//   border-radius: 10px;
+//   margin: 0 auto;
+//   margin-top: 30px;
+//   font-size: 15px;
+//   border-bottom: 1px solid;
+//   border-color: #f8f8f8;
+//   padding-top: 20px;
+//   padding-bottom: 20px;
+//   width: 700px;
+//   display: flex;
+// }
+
+.parent_category_box{
+  width:500px;
+  height:40px;
+  border-radius: 10px;
+}
+
+// .pulldown{
+//   width:500px;
+//   height:40px;
+//   border-radius: 10px;
+// }
+
+#children_box{
+  width:500px;
+  height:40px;
+  border-radius: 10px;
+}
+
+#grandchildren_box{
+  width:500px;
+  height:40px;
+  border-radius: 10px;
+  margin: 0 auto;
 }

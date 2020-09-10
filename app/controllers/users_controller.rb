@@ -3,6 +3,12 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
+  end
+  # POST /resource
+  def create
+    @user = User.new(user_params)
+    @user.save
   end
 
   def show
@@ -18,3 +24,4 @@ class UsersController < ApplicationController
   end
 
 end
+

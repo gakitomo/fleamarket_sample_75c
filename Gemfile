@@ -77,3 +77,7 @@ gem 'activesupport', '~> 6.0.0.beta3'
 
 gem 'font-awesome-sass'
 gem 'active_hash'
+gem 'pry-rails'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'jquery-rails'

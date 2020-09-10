@@ -3,6 +3,9 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  # def new
+  # end
+
   def new
     @user = User.new
   end
@@ -37,6 +40,5 @@ class UsersController < ApplicationController
   def sign_up_params
     params.require(:user).permit(:nickname, :email, :password, :family_name, :given_name, :family_name_kana, :given_name_kana, :birthday)
   end
-
 
 end

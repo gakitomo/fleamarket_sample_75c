@@ -1,10 +1,8 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :destroy]
   def index
     @users = User.all
   end
-
-  # def new
-  # end
 
   def new
     @user = User.new
@@ -21,7 +19,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(id: params[:id])
   end
   
   def edit
@@ -31,14 +28,17 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id]) #特定のidを持つ情報を取得
     @user.destroy
-    redirect_to :root #削除に成功すればrootページに戻る
+    redirect_to :root
   end
 
   private
   def sign_up_params
     params.require(:user).permit(:nickname, :email, :password, :family_name, :given_name, :family_name_kana, :given_name_kana, :birthday)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
 end

@@ -259,21 +259,14 @@ p{
   border-radius: 10px;
 }
 
-// .pulldown{
-//   width:500px;
-//   height:40px;
-//   border-radius: 10px;
-// }
-
-#children_box{
-  width:500px;
-  height:40px;
-  border-radius: 10px;
+.image-file{
+  width:200px;
+  height:150px;
+  font-size:10px;
+  margin-left:100px;
+  
 }
 
-#grandchildren_box{
-  width:500px;
-  height:40px;
-  border-radius: 10px;
-  margin: 0 auto;
+.js-file{
+  font-size:10px;
 }

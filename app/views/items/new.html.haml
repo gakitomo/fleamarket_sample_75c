@@ -115,17 +115,17 @@
           %p.need 必須
         = f.text_field :price,class: "items__box--normal",placeholder:"0",required:"true",style: "text-align:right"
 
-        .items__box
-        .items__box--list
-          %p.name 商品の説明
-          %p.need 必須
-        = f.text_field :seller_id,class: "items__box--large",placeholder:"",required:"true"
+        -# .items__box
+        -# .items__box--list
+        -#   %p.name 商品の説明
+        -#   %p.need 必須
+        -# = f.text_field :seller_id,class: "items__box--large",placeholder:"",required:"true"
 
-        .items__box
-        .items__box--list
-          %p.name 商品の説明
-          %p.need 必須
-        = f.text_field :buyer_id,class: "items__box--large",placeholder:"",required:"true"
+        -# .items__box
+        -# .items__box--list
+        -#   %p.name 商品の説明
+        -#   %p.need 必須
+        -# = f.text_field :buyer_id,class: "items__box--large",placeholder:"",required:"true"
 
       .items__box
         = f.submit 'Send', class: 'submit-box',value:'出品する'

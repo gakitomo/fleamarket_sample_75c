@@ -9,6 +9,8 @@ class ItemsController < ApplicationController
   def get_category_grandchildren
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
+  
+  before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
 
   def index
     @items = Item.all
@@ -20,6 +22,11 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.images.new
     @parents = Category.where(ancestry: nil)
+  def show
+    @item = Item.find(params[:id])
+  end
+
+  def show
   end
 
   def create

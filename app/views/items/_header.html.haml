@@ -1,7 +1,6 @@
 .header__top
   .header__top--logo
-    = link_to root_path do
-      = image_tag 'logo.png'
+    = link_to image_tag "logo.png"
   .header__top--search
     = text_field_tag :search, "", class:"header__top--search__text", placeholder: "何をお探しですか？"
     = link_to icon('fas','search'), class:"header__top--search__icon"
@@ -12,5 +11,11 @@
     .header__bottom__search--brand
       =link_to "ブランドから探す"
   .header__bottom__mypage
-    =link_to image_tag "member_photo_noimage_thumb.png"
-    =link_to "マイページ"
+    -if user_signed_in?
+      =link_to image_tag "member_photo_noimage_thumb.png"
+      =link_to "マイページ", users_path
+    - else
+      .header__bottom__mypage--log-in
+        = link_to "ログイン", new_user_session_path, class: 'btn'
+      .header__bottom__mypage--sign-up
+        = link_to "新規会員登録", new_user_registration_path, class: 'btn'

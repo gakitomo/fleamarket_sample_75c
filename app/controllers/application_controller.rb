@@ -1,21 +1,26 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_action :basic_auth, if: :production?
-  # before_action :authenticate_user!
+  protect_from_forgery with: :null_session
+  before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+
+  def after_sign_in_path_for(resource)
+    root_path
+  end
+
+  def after_sign_out_path_for(resource)
+    root_path
+  end
 
   protected  
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:family_name])
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:given_name])
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:family_name_kana])
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:given_name_kana])
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:birthday])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :family_name, :given_name, :family_name_kana, :given_name_kana, :birthday])
   end
 
   private
+  
 
   def production?
     Rails.env.production?
@@ -27,4 +32,5 @@ class ApplicationController < ActionController::Base
       password == Rails.application.credentials[:basic_auth][:pass]  
     end
   end
+  
 end

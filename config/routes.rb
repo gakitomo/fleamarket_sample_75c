@@ -8,8 +8,10 @@ Rails.application.routes.draw do
 
   root 'items#index'
 
-  resources :items, only:[:index, :new, :show]
   resources :users
+  resources :items, only: [:index, :new, :create, :show]
+  resources :cards, only: [:index, :new, :create, :show, :destroy] do
+  end
   
 
 end

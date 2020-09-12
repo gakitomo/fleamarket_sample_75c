@@ -3,6 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise  :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable
+          
+  has_secure_password
+
+  def soft_delete  
+    update_attribute(:deleted_at, Time.current)  
+  end
 
   validates :nickname, presence: true
   validates :family_name, presence: true
@@ -11,5 +17,9 @@ class User < ApplicationRecord
   validates :given_name_kana, presence: true
   validates :birthday, presence: true
 
+
+  has_one :card, dependent: :destroy
+
   has_many :items, dependent: :destroy
+
 end

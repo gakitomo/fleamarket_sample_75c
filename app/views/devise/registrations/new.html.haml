@@ -15,6 +15,7 @@
             .error-message
               = resource.errors.full_messages_for(:nickname).first
 
+
         .field
           .item
             = f.label "メールアドレス"
@@ -80,4 +81,5 @@
         .actions
           = f.submit "新規作成", class: "submit-btn"
   .out-frame__footer
+
     = render "devise/shared/links"

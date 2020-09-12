@@ -67,6 +67,8 @@ end
 gem 'haml-rails'
 
 gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 gem 'active_hash'
 gem 'ancestry'
 gem 'devise' 
@@ -77,3 +79,5 @@ gem 'activesupport', '~> 6.0.0.beta3'
 
 gem 'font-awesome-sass'
 gem 'active_hash'
+gem 'dotenv-rails'
+gem 'jquery-rails'

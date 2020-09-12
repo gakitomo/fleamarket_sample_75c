@@ -75,6 +75,7 @@
         %p.item__detail お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
   %section.pickupContainer
     %h2.head ピックアップカテゴリー
+    -# - @items.each do |item|
     .productBox
       .productHead
         = link_to "新規投稿商品", "items", class: "itemDesign"
@@ -84,9 +85,11 @@
             = image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/18/beef.JPG")
             .body
               %h3.names テスト
+              -# = item.name
               .details 
                 %ul
                   %li 1000円
+                  -# = item.price
                   %li 
                     %i.fa.fa-star.likeIcon 1
                 %p 税込み

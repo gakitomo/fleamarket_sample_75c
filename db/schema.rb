@@ -25,11 +25,6 @@ ActiveRecord::Schema.define(version: 2020_09_09_134831) do
     t.index ["item_id"], name: "index_images_on_item_id"
   end
 
-  create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.text "description", null: false
@@ -41,10 +36,12 @@ ActiveRecord::Schema.define(version: 2020_09_09_134831) do
     t.string "category_id", null: false
     t.integer "shipping_data", null: false
     t.integer "price", null: false
-    t.integer "seller_id"
-    t.integer "buyer_id"
+    t.bigint "seller_id"
+    t.bigint "buyer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["buyer_id"], name: "index_items_on_buyer_id"
+    t.index ["seller_id"], name: "index_items_on_seller_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -65,10 +62,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_134831) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "items", "users"
-    t.integer "user", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
+  add_foreign_key "images", "items"
+  add_foreign_key "items", "users", column: "buyer_id"
+  add_foreign_key "items", "users", column: "seller_id"
 end

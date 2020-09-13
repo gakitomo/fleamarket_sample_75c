@@ -11,8 +11,8 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.string :category_id, null: false
       t.integer :shipping_data, null: false
       t.integer :price, null: false
-      t.integer :seller_id
-      t.integer :buyer_id
+      t.references :seller, foreign_key: {to_table: :users} 
+      t.references :buyer, foreign_key: {to_table: :users}
       t.timestamps
     end
   end

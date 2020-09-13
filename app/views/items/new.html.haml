@@ -33,14 +33,6 @@
               = file_field_tag :src, name: "item[images_attributes][#{@item.images.count}][]", class: 'js-file'
               .js-remove 削除
 
-
-
-          -# %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][1][image]", id: "item_item_images_attributes_1_image" }
-          -# %p クリックしてファイルをダウンロード
-        -# %p 画像がありません
-
-
-
       .items__box
         .items__box--list
           
@@ -77,8 +69,6 @@
         .items__box--list
           %p.name 商品の状態
           %p.need 必須
-        -# = f.select :condition, {'新品、未使用': 1, '未使用に近い': 2,'目立った傷や汚れなし': 3,'やや傷や汚れあり': 4,'傷や汚れあり': 5,'全体的に状態が悪い': 6}, { include_blank: '選択してください'}, { class: 'items__box--normal' , required: true }  
-
         = f.collection_select :condition_id,Condition.all,:id,:name,{ include_blank: '選択してください'}, { class: 'items__box--normal' , required: true } 
         
   
@@ -114,18 +104,6 @@
           %p.name 販売価格
           %p.need 必須
         = f.text_field :price,class: "items__box--normal",placeholder:"0",required:"true",style: "text-align:right"
-
-        -# .items__box
-        -# .items__box--list
-        -#   %p.name 商品の説明
-        -#   %p.need 必須
-        -# = f.text_field :seller_id,class: "items__box--large",placeholder:"",required:"true"
-
-        -# .items__box
-        -# .items__box--list
-        -#   %p.name 商品の説明
-        -#   %p.need 必須
-        -# = f.text_field :buyer_id,class: "items__box--large",placeholder:"",required:"true"
 
       .items__box
         = f.submit 'Send', class: 'submit-box',value:'出品する'

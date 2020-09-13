@@ -12,6 +12,8 @@ class Item < ApplicationRecord
  
   has_many :images
   accepts_nested_attributes_for :images
-  belongs_to :seller, class_name: "User"
-  belongs_to :buyer, class_name: "User"
+  belongs_to :seller,class_name: "User",foreign_key: "seller_id",optional: true
+  belongs_to :buyer, class_name: "User", foreign_key: "buyer_id",optional: true
+
+  validates :name,presence: true, length:{maximum: 6}
 end

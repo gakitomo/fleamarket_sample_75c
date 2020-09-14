@@ -13,7 +13,6 @@ class ItemsController < ApplicationController
  
 
   def index
-    @items = Item.all
     @items = Item.includes(:images).order('created_at DESC')
     
   end
@@ -21,7 +20,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.new
-    @parents = Category.where(ancestry: nil)
+    @parents = set_category
   end
 
   def show
@@ -30,7 +29,7 @@ class ItemsController < ApplicationController
  
 
   def create
-    @item = Item.create!(item_params)
+    @item = Item.new(item_params)
     if @item.save
      redirect_to root_path
     else

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'create/Categories'
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'
@@ -8,8 +9,18 @@ Rails.application.routes.draw do
 
   root 'items#index'
 
+  resources :items do
+  collection do
+    get 'get_category_children', defaults: { format: 'json' }
+    get 'get_category_grandchildren', defaults: { format: 'json' }
+  end
+  member do
+    get 'get_category_children', defaults: { format: 'json' }
+    get 'get_category_grandchildren', defaults: { format: 'json' }
+  end
+end
+
   resources :users
-  resources :items, only: [:index, :new, :create, :show]
   resources :cards, only: [:index, :new, :create, :show, :destroy] do
   end
   

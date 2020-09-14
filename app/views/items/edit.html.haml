@@ -1,3 +1,17 @@
+.items__box--image 
+= f.fields_for :item_images,@item.item_images.build do |item_image|
+        -# %label{class: "input-box__image"}
+  .js-file_group{"data-index" => "#{item_image.index}"}
+  .image-file  
+    = item_image.file_field :image,class: 'js-file'
+    %span.js-remove 削除
+
+    - if @item.persisted?
+      = image.check_box :_destroy, data:{ index: item_image.index }, class: 'hidden-destroy'
+    - if @item.persisted?
+      .js-file_group{"data-index" => "#{@item.item_images.count}"}
+        = file_field_tag :image, name: "item[item_images_attributes][#{@item.item_images.count}][image]", class: 'js-file'
+        .js-remove 削除
 .image
   = image_tag 'logo.png', class: "out-frame__header--img"
   - if user_signed_in?

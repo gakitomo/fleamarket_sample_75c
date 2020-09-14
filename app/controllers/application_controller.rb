@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery
   before_action :basic_auth, if: :production?
   protect_from_forgery with: :null_session
   before_action :authenticate_user!
@@ -28,7 +29,7 @@ class ApplicationController < ActionController::Base
   def basic_auth
     authenticate_or_request_with_http_basic do |username, password|
       username == Rails.application.credentials[:basic_auth][:user] &&
-      password == Rails.application.credentials[:basic_auth][:pass]
+      password == Rails.application.credentials[:basic_auth][:pass]  
     end
   end
 

@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
   before_action :set_category, only: [:new, :edit, :create, :update, :destroy]
-  # before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
 
   def get_category_children
@@ -26,7 +25,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # @item = Item.find(params[:id])
   end
 
  
@@ -60,9 +58,5 @@ class ItemsController < ApplicationController
     @category_parent_array = Category.where(ancestry: nil)
   end
 
-
-  def set_user
-    @user = User.find(current_user.id)
-  end
 end
 

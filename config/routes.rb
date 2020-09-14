@@ -20,7 +20,6 @@ Rails.application.routes.draw do
   end
 end
 
-  # resources :items, only:[:index, :new, :show]
   resources :users
   resources :cards, only: [:index, :new, :create, :show, :destroy] do
   end

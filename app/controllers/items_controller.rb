@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
   
- 
+
 
   def index
     @items = Item.includes(:images).order('created_at DESC')
@@ -25,18 +25,18 @@ class ItemsController < ApplicationController
   def show
   end
 
- 
+
 
   def create
     @item = Item.new(item_params)
     if @item.save
-     redirect_to root_path
+      redirect_to root_path
     else
-     render :new
+      render :new
     end
-   end
+  end
 
-   def edit
+  def edit
     @grandchild_category = @item.category
     @child_category = @grandchild_category.parent 
     @category_parent = @child_category.parent

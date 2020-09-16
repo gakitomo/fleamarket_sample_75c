@@ -15,7 +15,6 @@
   font-size: 35px;
   text-align: center;
 img{
-  width:250px;
   height:80px;
   margin: 0 auto;
   }
@@ -87,6 +86,12 @@ input{
   border-radius: 10px;
 }
 
+.parent--category{
+  width:500px;
+  height:40px;
+  border-radius: 10px;
+}
+
 .items__box--large{
   width:500px;
   height:150px;
@@ -119,8 +124,6 @@ input{
    margin-top: 30px;
  }
 
- //商品購入確認画面
-
  .wrapper{
   position: relative;
   width:100%;
@@ -133,7 +136,6 @@ input{
   font-size: 35px;
   text-align: center;
 img{
-  width:250px;
   height:80px;
   margin: 0 auto;
   margin-bottom: 30px;
@@ -223,4 +225,42 @@ p{
   text-decoration:none;
   margin-left:10px;
   color:rgb(0, 149, 238);
+}
+
+.item_input__body__category#category_box{
+    width:500px;
+    height:40px;
+    border-radius: 10px;
+}
+
+.parent_category_box{
+  width:500px;
+  height:40px;
+  border-radius: 10px;
+}
+
+.image-file{
+  width:200px;
+  height:150px;
+  font-size:10px;
+  margin-left:100px;
+  
+}
+
+.js-file{
+  font-size:10px;
+}
+
+#children_category{
+  width:500px;
+  height:40px;
+  border-radius:10px;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+#grandchildren_category{
+  width:500px;
+  height:40px;
+  border-radius:10px;
 }

@@ -29,11 +29,12 @@
       設定
       .list-group
         .list-group__menu
-          =link_to "クレジットカードを登録・変更する"
+          =link_to cards_path do
+            クレジットカードの登録・削除
         .list-group__menu
           =link_to "お問い合わせ"
         .list-group__menu
-          =link_to root_path do
+          =link_to destroy_user_session_path, method: :delete do
             ログアウト
   .right-content
     .main__title

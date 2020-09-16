@@ -38,6 +38,7 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
   gem 'capistrano-rails-console'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -67,6 +68,8 @@ end
 gem 'haml-rails'
 
 gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 gem 'active_hash'
 gem 'ancestry'
 gem 'devise' 
@@ -77,5 +80,9 @@ gem 'activesupport', '~> 6.0.0.beta3'
 
 gem 'font-awesome-sass'
 gem 'active_hash'
+gem 'pry-rails'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'jquery-rails'
+gem 'fog-aws'
+gem 'dotenv-rails'

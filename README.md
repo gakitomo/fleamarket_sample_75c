@@ -52,8 +52,8 @@
 |shipping_date|integer|null:false|
 |price|integer|null:false|
 |user|references|null:false,foreign_key:true|
-|seller|reference|foreign_key:true|
-|buyer|reference|foreign_key:true|
+|seller|reference|
+|buyer|reference|
 
 ### Association
 - belongs_to :user

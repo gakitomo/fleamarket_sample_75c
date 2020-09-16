@@ -1,6 +1,7 @@
 .header__top
   .header__top--logo
-    = link_to image_tag "logo.png"
+    = link_to root_path do
+      = image_tag 'logo.png'
   .header__top--search
     = text_field_tag :search, "", class:"header__top--search__text", placeholder: "何をお探しですか？"
     = link_to icon('fas','search'), class:"header__top--search__icon"
@@ -12,4 +13,5 @@
       =link_to "ブランドから探す"
   .header__bottom__mypage
     =link_to image_tag "member_photo_noimage_thumb.png"
-    =link_to "マイページ"
+    =link_to users_path do
+      マイページ

@@ -1,3 +1,4 @@
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -14,9 +15,13 @@
  *= require_self
  */
 
- @import "reset";
- @import "modules/item_detail";
- @import "modules/items";
- @import "modules/new";
- @import "font-awesome-sprockets";
- @import "font-awesome";
+@import "reset";
+@import "modules/_users";
+@import "modules/new";
+@import "modules/devise";
+@import "modules/item_detail";
+@import "modules/items";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+

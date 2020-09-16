@@ -1,84 +1,118 @@
+
 .wrapper
   = image_tag "logo.png"
 
-  .items
-    .items__box
-      .items__box--list
-        %p.name 出品画像
-        %p.need 必須
-      .items__box--image
-        %label{class: "input-box__image"}
-          %input{type: "file"}
-          %i.fa.fa-camera
-          %p クリックしてファイルをダウンロード
-      %p 画像がありません
-    .items__box
-      .items__box--list
-        %p.name 商品名 
-        %p.need 必須
-      %input{name: "name",type: "text", class: "items__box--normal", placeholder: " 商品名を入力してください",required:"true"}
-      .items__box--list
-        %p.name 商品の説明
-        %p.need 必須
-      %input{name: "description", type: "text", class: "items__box--large",placeholder: " 商品の説明",required:"true",required:"true"}
-
-    .items__box
-      .items__box--list
-        %p.name カテゴリー
-        %p.need 必須
-      %select{name: "example1",class: "items__box--normal"}
-        %option{value: "サンプル1"} 選択してください
-
-
-      %p.name ブランド
-      %input{name: "brand", type: "text", class: "items__box--normal",placeholder:" 例)シャネル"}
-      .items__box--list
-        %p.name 商品の状態
-        %p.need 必須
-      %select{name: "condition",class: "items__box--normal",required:"true"}
-        %option{value: "select"} 選択してください
-        %option{value: "condition1"} 新品、未使用
-        %option{value: "condition2"} 未使用に近い
-        %option{value: "condition3"} 目立った傷や汚れなし
-        %option{value: "condition4"} やや傷や汚れあり
-        %option{value: "condition5"} 傷や汚れあり
-        %option{value: "condition6"} 全体的に状態が悪い
   
-    .items__box
-      .items__box--list
-        %p.name 配送料の負担
-        %p.need 必須
-      %select{name: "shipping_method",class: "items__box--normal",required:"true"}
-        %option{value: "select"} 選択してください
-        %option{value: "method1"} 送料込み(出品者負担)
-        %option{:value => "method2"} 着払い(購入者負担)
-      .items__box--list
-        %p.name 発送元の地域
-        %p.need 必須
-      %select{name: "shipping_area",class: "items__box--normal",required:"true"}
-        %option{value: "select"} 選択してください
-        %option{value: "サンプル1"} サンプル
 
-      .items__box--list
-        %p.name 発送までの日数
-        %p.need 必須
-      %select{name: "shipping_data",class: "items__box--normal",required:"true"}
-        %option{value: "select"} 選択してください
-        %option{value: "date1"} 1~2日で発送
-        %option{value: "date2"} 2~3日で発送
-        %option{value: "date3"} 4~7日で発送
-
-    .items__box
-      .items__box--list
-        %p.name 販売価格
-        %p.need 必須
-      %input{name: "name",type: "text", class: "items__box--normal", placeholder: " 0 ",required:"true",style: "text-align:right"}
-
-    .items__box
-      %input{name: "brand", type: "submit", class: "submit-box",value:"出品する"}
-      %input{name: "brand", type: "submit", class: "edit-box",value:"下書きに保存"}
-      %p.items__box--back もどる
+  .items
+    = form_with model: @item,local: true do |f|
+      .items__box
+        .items__box--list
+          %p.name 出品画像
+          %p.need 必須
+         
       
-    .items__footer
-      = image_tag "logo-white.png"
+      .items__box--image 
+        #previews
+          - if @item.persisted?
+            - @item.images.each_with_index do |image, i|
+              = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
+ 
+      = f.fields_for :images,@item.images.build do |image|
+           
+         
+        .js-file_group{"data-index" => "#{image.index}"}
+        .image-file  
+          = image.file_field :src,class: 'js-file'
+          %span.js-remove 削除
 
+          - if @item.persisted?
+            = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+          - if @item.persisted?
+            .js-file_group{"data-index" => "#{@item.images.count}"}
+              = file_field_tag :src, name: "item[images_attributes][#{@item.images.count}][]", class: 'js-file'
+              .js-remove 削除
+
+      .items__box
+        .items__box--list
+          
+          %p.name 商品名 
+          %p.need 必須
+        = f.text_field :name,class: "items__box--normal",placeholder:" 商品名を入力してください",required:"true"
+      .items__box
+        .items__box--list
+          %p.name 商品の説明
+          %p.need 必須
+        = f.text_field :description,class: "items__box--large",placeholder:"",required:"true"
+
+
+      
+
+      .items__box
+        .items__box--list
+          %p.name カテゴリー
+          %p.need 必須
+        .item_input__body__category#category_box
+        .pulldown#partent_box
+          = f.select :category_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]}),{include_blank: "選択してください"}, { class: "parent_category_box", id: "parent_category"}
+
+        .pulldown.item_input__body__category__children#children_box
+        .pulldown.item_input__body__category__grandchildren#grandchildren_box
+
+      .items__box
+        .items__box--list
+          %p.name ブランド
+          %p.need 必須
+        = f.text_field :brand,class: "items__box--normal",placeholder:"例)シャネル",required:"true"
+
+      .items__box
+        .items__box--list
+          %p.name 商品の状態
+          %p.need 必須
+        = f.collection_select :condition_id,Condition.all,:id,:name,{ include_blank: '選択してください'}, { class: 'items__box--normal' , required: true } 
+        
+  
+      .items__box
+        .items__box--list
+          %p.name 配送料の負担
+          %p.need 必須
+        = f.collection_select :shipping_burden_id,ShippingBurden.all,:id,:name,{ include_blank: '選択してください'}, { class: 'items__box--normal' , required: true } 
+
+      .items__box
+        .items__box--list
+          %p.name 発送元の地域
+          %p.need 必須
+        = f.collection_select :shipping_area_id,ShippingArea.all,:id,:name,{ include_blank: '選択してください'}, { class: 'items__box--normal' , required: true } 
+        
+
+      .items__box
+        .items__box--list
+          %p.name 配送方法
+          %p.need 必須
+        = f.collection_select :shipping_method_id,ShippingMethod.all,:id,:name,{ include_blank: '選択してください'}, { class: 'items__box--normal' , required: true } 
+
+      .items__box
+        .items__box--list
+          %p.name 発送までの日数
+          %p.need 必須
+        = f.select :shipping_data, {'1~2日で発送': 1, '2~3日で発送': 2,'4~7日で発送': 3}, { include_blank: '選択してください'}, { class: 'items__box--normal' , required: true } 
+        
+           
+
+      .items__box
+        .items__box--list
+          %p.name 販売価格
+          %p.need 必須
+        = f.text_field :price,class: "items__box--normal",placeholder:"0",required:"true",style: "text-align:right"
+
+      .items__box
+        = f.submit 'Send', class: 'submit-box',value:'出品する'
+       
+        %input{name: "brand", type: "submit", class: "edit-box",value:"トップに戻る"}
+       
+      
+      .items__footer
+        = image_tag "logo-white.png"
+
+      
+      

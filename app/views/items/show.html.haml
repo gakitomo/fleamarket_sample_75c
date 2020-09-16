@@ -27,14 +27,13 @@
     .contentRight
       .topContent
         .itemBox
+        -# - @images.each do |image|
           %h2.itemBox__name
             -# = @item.name
           .itemBox__body
             %ul
               %li
-                -# = image_tag  @image.src
-                -# = image_tag  @image.src[0].src_path_url
-                -# = image_tag  image.show
+                -# = image_tag "image.src"
                 %ul
                   %li
                     = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"  # @items.images[1]

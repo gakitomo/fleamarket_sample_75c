@@ -76,6 +76,7 @@
   %section.pickupContainer
     %h2.head ピックアップカテゴリー
     -# - @items.each do |item|
+    -# - @images.each do |image|
     .productBox
       .productHead
         = link_to "新規投稿商品", "items", class: "itemDesign"
@@ -83,6 +84,7 @@
         .productList
           = link_to "item_path(items.id)" do
             = image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/18/beef.JPG")
+            -# = image_tag item.images[0].src.to_s
             .body
               %h3.names テスト
               -# = item.name

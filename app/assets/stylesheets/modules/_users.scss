@@ -26,7 +26,7 @@
       display: flex;
       position: relative;
       &__text{
-        width: 400px;
+        width: 900px;
         height: 50px;
         padding-left: 15px;
       }
@@ -106,15 +106,15 @@
         margin: 0 auto;
         margin-top: 5px;
         &__menu{
-          border: 1px solid #212121;
-          background-color: honeydew;
+          border: 1px solid #000000;
+          background-color: #3CCACE;
           margin-bottom: -1px;
           padding: 10px 10px;
           font-size: 18px;
           cursor: pointer;
           a{
             text-decoration: none;
-            color: black;
+            color: white;
             display: block;
           }
         }
@@ -137,8 +137,7 @@
       flex-direction: middle;
       padding: 0 10px 24px;
       margin: 0 auto;
-      // margin-left: 30px;
-      border: 1px solid #999999;
+      border: 1px solid #777777;
       &__box{
         width:200px;
         height: 270px;

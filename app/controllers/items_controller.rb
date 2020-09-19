@@ -14,7 +14,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.limit(5).order("created_at DESC")
-    # @items = Item.all
   end
 
   def show

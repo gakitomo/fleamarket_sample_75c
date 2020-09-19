@@ -37,16 +37,7 @@
                   %li
                     - @item.images.each do |image|
                       = image_tag image.src.url
-                
-              -# %li
-              -#   = image_tag @item.images[0].src.url
-              -#   %ul
-              -#     %li
-              -#       = image_tag @item.images[1].src.url
-              -#     %li
-              -#       = image_tag @item.images[2].src.url
-              -#     %li
-              -#       = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png"  # @items.images[3]
+
           .itemBox__price
             %span.digit
               = @item.price
@@ -135,7 +126,6 @@
               %button.commentBtn{name: "button", type: "submit"}
                 %i.fa.fa-comment
                   コメントする
-              -# = form_for [@comment],html: {class: 'new__comment' } do |f|
                 = f.text_field :content, class: 'commnet__body'
                 %p.noticeMsg
                   "相手のことを考え丁寧なコメントを心がけましょう"

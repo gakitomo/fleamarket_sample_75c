@@ -245,7 +245,6 @@
       .productList{
         width: 220px;
         display: inline-block;
-        float: left;
         a{
           background-color: #fff;
           display: inline-block;
@@ -282,6 +281,9 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                li{
+                  margin-left: auto;
+                }
               }
               p{
                 font-size: 10px;

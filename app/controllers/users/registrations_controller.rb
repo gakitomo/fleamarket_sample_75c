@@ -1,26 +1,48 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+  # before_action :configure_user_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
-  # GET /resource/sign_up
+  # GET /resource/user
   def new
     @user = User.new
+    @user.build_profile
   end
 
   # POST /resource
   def create
-    @user = User.new(sign_up_params)
-    @user.birthday = "#{params[:birthday]["birthday(1i)"]}-#{params[:birthday]["birthday(2i)"]}-#{params[:birthday]["birthday(3i)"]}"
-    if @user.save
-      bypass_sign_in(@user)
-      session["devise.regist_data"] = {user: @user.attributes}
-      session["devise.regist_data"][:user]["password"] = params[:user][:password]
-      redirect_to root_path
-    else
-      render :new
+    @user = User.new(user_params)
+    @user.build_profile(user_params[:profile_attributes])
+    @user.build_profile(user_params[:profile_attributes])["birthday"] = "#{params[:birthday]["birthday(1i)"]}-#{params[:birthday]["birthday(2i)"]}-#{params[:birthday]["birthday(3i)"]}"
+    unless @user.valid?
+      flash.now[:alert] = @user.errors.full_messages
+      binding.pry
+      render :new and return
     end
+    session["devise.regist_data"] = {user: @user.attributes}
+    session["devise.regist_data"][:user]["password"] = params[:user][:password]
+    session[:profile_attributes] = user_params[:profile_attributes]
+    session[:profile_attributes]["birthday"] = "#{params[:birthday]["birthday(1i)"]}-#{params[:birthday]["birthday(2i)"]}-#{params[:birthday]["birthday(3i)"]}"
+    @address = @user.build_address
+    render :new_address
+  end
+
+  def create_address
+    @user = User.new(session["devise.regist_data"]["user"])
+    @profile = @user.build_profile(session[:profile_attributes])
+    @address = Address.new(address_params)
+    unless @address.valid?
+      flash.now[:alert] = @address.errors.full_messages
+      render :new_address and return
+    end
+    @user.build_address(@address.attributes)
+    @user.save
+    @profile.save
+    session["devise.regist_data"]["user"].clear
+    session[:profile_attributes].clear
+    bypass_sign_in(@user)
+    redirect_to root_path
   end
 
   # GET /resource/edit
@@ -47,25 +69,38 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
+  def user_params
+    params.require(:user).permit(
+      :nickname,
+      :email,
+      :password,
+      :password_confirmation,
+      profile_attributes:
+      [
+        :family_name,
+        :given_name,
+        :family_name_kana,
+        :given_name_kana,
+        :birthday
+      ]
+    )
+  end
 
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def address_params
+    params.require(:address).permit(
+      :address_first_name,
+      :address_last_name,
+      :address_first_name_kana,
+      :address_last_name_kana,
+      :address_number,
+      :address_prefecture,
+      :address_name,
+      :address_block,
+      :address_building,
+      :address_phone_number
+    )
+  end
 
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
 
-  # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
-
-  # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
-  # end
 end

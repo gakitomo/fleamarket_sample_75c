@@ -44,6 +44,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     redirect_to root_path
   end
 
+
   # GET /resource/edit
   # def edit
   #   super
@@ -100,6 +101,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :address_phone_number
     )
   end
+
 
 
 end

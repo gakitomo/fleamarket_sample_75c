@@ -13,6 +13,7 @@
             = f.label "必須", class: "required"
           = f.text_field :nickname, autofocus: true, placeholder: "例）フリーメン", class: "input-form"
 
+
         .field
           .item
             = f.label "メールアドレス"
@@ -55,4 +56,5 @@
         .actions
           = f.submit "次へ", class: "submit-btn"
   .out-frame__footer
+
     = render "devise/shared/links"

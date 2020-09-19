@@ -5,7 +5,8 @@ class User < ApplicationRecord
           :recoverable, :rememberable, :validatable, password_length: 7..128
 
   validates :nickname, presence: true
-  validates :email, format: { with: /\A\S+@\S+\.\S+\z/}
+  validates :email, format: { with: /\A\S+@\S+\.\S+\z/}, allow_blank: true
+  validates :email, presence: true
 
   has_many :items, dependent: :destroy
   has_one :address

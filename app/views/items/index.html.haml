@@ -1,5 +1,5 @@
 .header
-  = render "header.html.haml"
+  = render "header"
 .main
   %section.mainVisual
     .content
@@ -20,7 +20,7 @@
     %ul.lists 
       %li.list 
         .list__pict
-          %spna.number 1
+          %span.number 1
           = image_tag "pict-reason-01.jpg"
         %h3.list__text
           %span 3分 
@@ -28,7 +28,7 @@
         %p.list__description スマホで入力するだけで簡単に出品できる
       %li.list 
         .list__pict
-          %spna.number 2
+          %span.number 2
           = image_tag "pict-reason-02.jpg"
         %h3.list__text
           %span シンプル
@@ -36,7 +36,7 @@
         %p.list__description めんどくさい入力はなく、検索も購入もスムーズ！
       %li.list 
         .list__pict
-          %spna.number 3
+          %span.number 3
           = image_tag "pict-reason-03.jpg"
         %h3.list__text
           手数料
@@ -57,7 +57,7 @@
 
   %section.topKeyFeatures
     %h2.head FURIMAの特徴
-    .itmes
+    .items
       %section.item
         %figure.item__img
           = image_tag "icon-01.png"

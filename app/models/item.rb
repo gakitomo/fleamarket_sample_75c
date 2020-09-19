@@ -7,9 +7,10 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_burden
   validates :shipping_burden, presence: true
   belongs_to_active_hash :shipping_method
+
   validates :shipping_method, presence: true
   belongs_to :category
- 
+  belongs_to :user, foreign_key: 'user_id'
   has_many :images
   accepts_nested_attributes_for :images
   belongs_to :seller,class_name: "User",foreign_key: "seller_id",optional: true

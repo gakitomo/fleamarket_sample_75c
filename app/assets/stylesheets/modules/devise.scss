@@ -23,6 +23,15 @@
       font-weight: bold;
       border-bottom: 1px solid;
     }
+    #error_explanation{
+      width: 343px;
+      margin: 0 auto;
+      margin-top: 20px;
+      .error-messages{
+        text-align: left;
+        color: red;
+      }
+    }
     .user_form{
       width: 343px;
       margin: 0 auto;
@@ -67,20 +76,18 @@
           border-radius: 4px;
           cursor: pointer;
         }
-        .error-message{
-          text-align: left;
-          color: red;
-        }
       }
-      .submit-btn{
-        height: 40px;
-        width: 100%;
-        margin: 20px 0 40px;
-        background-color: red;
-        color: white;
-        border-radius: 4px;
-        border: 0px;
-        cursor: pointer;
+      .actions{
+        .submit-btn{
+          height: 40px;
+          width: 100%;
+          margin: 20px 0 40px;
+          background-color: red;
+          color: white;
+          border-radius: 4px;
+          border: 0px;
+          cursor: pointer;
+        }
       }
     }
   }

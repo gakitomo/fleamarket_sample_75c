@@ -6,5 +6,4 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_burden
   belongs_to_active_hash :shipping_method
   belongs_to :user, foreign_key: 'user_id'
-  belongs_to :category
 end

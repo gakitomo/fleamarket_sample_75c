@@ -21,9 +21,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # @item = Item.find(params[:id])
-    # @images = Item.images.find(params[:id])
-    @items = Item.includes(:images).order('created_at DESC')
+    @item = Item.find(params[:id])
+    # @images = Item.images.src
+    # @items = Item.includes(:images).order('created_at DESC')
     
   end
 

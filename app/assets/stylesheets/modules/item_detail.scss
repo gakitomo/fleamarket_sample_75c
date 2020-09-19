@@ -82,15 +82,9 @@
                 justify-content: center;
                 margin-top: 10px;
                 li{
-                  width: 25%;
-                  margin: 0 25px 0 0;
-                  img{
-                    object-fit: cover;
-                    height: 87px;
-                  }
-                }
-                li{
-                  width: 25%;
+                  display: flex;
+                  width: 150px;
+                  // width: 25%;
                   margin: 0 25px 0 0;
                   img{
                     object-fit: cover;

@@ -17,7 +17,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.build_profile(user_params[:profile_attributes])["birthday"] = "#{params[:birthday]["birthday(1i)"]}-#{params[:birthday]["birthday(2i)"]}-#{params[:birthday]["birthday(3i)"]}"
     unless @user.valid?
       flash.now[:alert] = @user.errors.full_messages
-      binding.pry
       render :new and return
     end
     session["devise.regist_data"] = {user: @user.attributes}

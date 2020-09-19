@@ -11,17 +11,19 @@ Rails.application.routes.draw do
 
   resources :items, only:[:index, :new, :show, :edit, :destroy]
   resources :items do
-  collection do
-    get 'get_category_children', defaults: { format: 'json' }
-    get 'get_category_grandchildren', defaults: { format: 'json' }
+  resources :items ,:purchase do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+    member do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
   end
-  member do
-    get 'get_category_children', defaults: { format: 'json' }
-    get 'get_category_grandchildren', defaults: { format: 'json' }
-  end
-end
 
-  resources :users
+  resources :users do
+  end
   resources :cards, only: [:index, :new, :create, :show, :destroy] do
   end
   

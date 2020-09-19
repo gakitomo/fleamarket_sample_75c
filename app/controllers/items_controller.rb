@@ -13,18 +13,12 @@ class ItemsController < ApplicationController
 
 
   def index
-    @items = Item.all
-    # @items = Item.includes(:image_ids).limit(5).order("created_at DESC")
-
-    # if Item.buyer_id! = null
+    @items = Item.all.limit(5).order("created_at DESC")
     # @items = Item.all
   end
 
   def show
     @item = Item.find(params[:id])
-    # @images = Item.images.src
-    # @items = Item.includes(:images).order('created_at DESC')
-    
   end
 
   def new

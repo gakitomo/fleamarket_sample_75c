@@ -13,8 +13,15 @@ class ItemsController < ApplicationController
 
 
   def index
-    @items = Item.includes(:images).order('created_at DESC')
-    
+    @items = Item.all.limit(5).order("created_at DESC")
+  end
+
+  def show
+    @item = Item.find(params[:id])
+
+    @grandchild_category = @item.category
+    @child_category = @grandchild_category.parent
+    @parent_category = @child_category.parent
   end
 
   def new
@@ -22,7 +29,10 @@ class ItemsController < ApplicationController
     @item.images.new
   end
 
-  def show
+  def edit
+  end
+
+  def destroy
   end
 
 

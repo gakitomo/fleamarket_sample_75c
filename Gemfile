@@ -70,11 +70,11 @@ end
 gem 'haml-rails'
 
 gem 'devise'
-# gem 'devise-i18n'
-# gem 'devise-i18n-views'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 gem 'active_hash'
 gem 'ancestry'
-# gem 'devise' 
+gem 'devise' 
 gem 'payjp'
 
 gem 'zeitwerk', '~> 2.4'

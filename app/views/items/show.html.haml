@@ -7,19 +7,19 @@
     %li
       %i.fa.fa-angle-right
     %li
-      = link_to @parent_category.name, "items"
+      = link_to "ベビー、キッズ", "items"
     %li
       %i.fa.fa-angle-right
     %li
-      = link_to @child_category.name, "items"
+      = link_to "ベビー服(男女兼用) ~95cm", "items"
     %li
       %i.fa.fa-angle-right
     %li
-      = link_to @grandchild_category.name, "items"
+      = link_to "アウター", "items"
     %li
       %i.fa.fa-angle-right
     %li
-      = link_to @item.name
+      = link_to "product3", "items"
 
 .main
   .showmain
@@ -27,60 +27,58 @@
     .contentRight
       .topContent
         .itemBox
-          %h2.itemBox__name
-            = @item.name
+          %h2.itemBox__name product3
           .itemBox__body
             %ul
               %li
-                = image_tag @item.images[0].src.url
+                = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
                 %ul
                   %li
-                    - @item.images.each do |image|
-                      = image_tag image.src.url
-
+                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
+                  %li
+                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png"
+                  %li
+                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png"
           .itemBox__price
             %span.digit
-              = @item.price
-              円
+              ¥30000
             .itemBox__price-detail
               %span
                 (税込み)
               %span
                 (送料込み)
           .itemDetail
-            = @item.description
+            親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
           .table
             %table
               %tbody
                 %tr
                   %th 出品者
-                  %td 
-                    = @item.seller.family_name
-                    = @item.seller.given_name
+                  %td hoge
                 %tr
                   %th カテゴリー
                   %td
-                    = link_to @parent_category.name, "items"
+                    = link_to "ベビー、キッズ", "items"
                     %br
-                    = link_to @child_category.name, "items"
+                    = link_to "ベビー服(男女兼用) ~95cm", "items"
                     %br
-                    = link_to @grandchild_category.name, "items"
+                    = link_to "アウター", "items"
                 %tr
                   %th ブランド
                   %td
-                    = @item.brand
+                %tr
+                  %th 商品のサイズ
+                  %td
                 %tr
                   %th 商品の状態
-                  %td 
-                    = @item.condition.name
+                  %td 未使用に近い
                 %tr
                   %th 配送料の負担
-                  %td 
-                    = @item.shipping_burden.name
+                  %td 送料込み(出品者負担)
                 %tr
                   %th 発送元の地域
                   %td
-                    = @item.shipping_area.name
+                    = link_to "岩手県", "items"
 
                 %tr
                   %th 発送日の目安
@@ -95,26 +93,6 @@
                 = link_to "#" do
                   %i.fa.fa-flag
                   不適切な商品の通報
-
-          .buttonArea
-            %ul.butttons
-              - if user_signed_in?
-                %li
-                  = link_to "product_path(product)", method: :delete, class: "deleteBtn" do
-                    %i.fas.fa-trash-alt
-                    削除
-                %li
-                  = link_to "edit_item_path(item)", class: "editBtn" do
-                    %i.fas.fa-edit
-                    編集
-
-              - else
-                %li
-                  = link_to "#", class: "purchaseBtn" do
-                    %i.fas.fa-shopping-cart
-                    購入
-                
-
         .commentBox
           %ul.commentContents
             %form#new_comment.new_comment
@@ -126,7 +104,16 @@
               %button.commentBtn{name: "button", type: "submit"}
                 %i.fa.fa-comment
                   コメントする
-            
+              -# = form_for [@comment],html: {class: 'new__comment' } do |f|
+                = f.text_field :content, class: 'commnet__body'
+                %p.noticeMsg
+                  "相手のことを考え丁寧なコメントを心がけましょう"
+                  %br
+                  "不快な言葉遣いなどは利用制限や大会処分となることがあります"
+                = f.submit 'Send', class: 'commentBtn'
+                  = icon('fa', 'comment', class: "commentBtn")
+                    コメントする
+                
                   
 
       %ul.links
@@ -142,13 +129,13 @@
               %i.fa.fa-angle-right
 
       .relatedItems
-        = link_to @grandchild_category.name + "をもっと見る", "items"
+        = link_to "ベビー・キッズをもっと見る", "items"
         .productLists
           .productList
             = link_to "#" do
-              = image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/16/IMG_9072.JPG", class: "productList-image") #{@items.image}
+              = image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/16/IMG_9072.JPG", class: "productList-image")
               .bodyText
-                %h3.nameText 
+                %h3.nameText ee
                 .detail
                   %ul
                     %li 1000円

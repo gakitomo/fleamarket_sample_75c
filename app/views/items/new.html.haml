@@ -25,7 +25,7 @@
           .image-file  
             .js-file_group{"data-index" => "#{image.index}"}
               = image.file_field :src,class: 'js-file'
-              %span.js-remove 削除
+              %span.js-remove ×
        
             -# - if @item.persisted?
             -#   = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'

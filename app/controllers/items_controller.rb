@@ -39,19 +39,47 @@ class ItemsController < ApplicationController
   def edit
     @item = Item.find(params[:id])
     @item.images.new
-    @grandchild_category = @item.category
-    @child_category = @grandchild_category.parent 
-    @category_parent = @child_category.parent
-  
-    @category = Category.find(params[:id])
+    # # 孫カテゴリー
+    # @grandchild_category = @item.category
+    # # 子カテゴリー
+    # @child_category = @grandchild_category.parent
+    # # 親カテゴリー 
+    # @category_parent = @child_category.parent
+
+    # # 最終的に入っているデータ=孫データのid,name,ancestory
+    # @category = Category.find(params[:id])
     
-    @category_children = @item.category.parent.parent.children
-    @category_grandchildren = @item.category.parent.children
+    # # 子カテゴリー一覧
+    # @category_children = @item.category.parent.parent.children
+    # # 孫カテゴリー一覧
+    # @category_grandchildren = @item.category.parent.children
+
+    grandchild_category = @item.category
+    child_category = grandchild_category.parent
+
+
+    @category_parent_array = []
+    
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+      
+    end
+
+    @category_children_array = []
+    Category.where(ancestry: child_category.ancestry).each do |children|
+      @category_children_array << children
+    end
+
+    @category_grandchildren_array = []
+    Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
+      @category_grandchildren_array << grandchildren
+    end
+  
   end
 
   def update
-    @item = Item.update(item_params)
-    if @item.save
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
       redirect_to root_path
     else
       render :edit

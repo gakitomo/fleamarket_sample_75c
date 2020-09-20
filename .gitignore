@@ -39,5 +39,3 @@ yarn-debug.log*
 /yarn.lock
 
 config/secrets.yml
-
-public/uploads

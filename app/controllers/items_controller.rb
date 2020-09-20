@@ -49,20 +49,6 @@ class ItemsController < ApplicationController
   def edit
     @item = Item.find(params[:id])
     @item.images.new
-    # # 孫カテゴリー
-    # @grandchild_category = @item.category
-    # # 子カテゴリー
-    # @child_category = @grandchild_category.parent
-    # # 親カテゴリー 
-    # @category_parent = @child_category.parent
-
-    # # 最終的に入っているデータ=孫データのid,name,ancestory
-    # @category = Category.find(params[:id])
-    
-    # # 子カテゴリー一覧
-    # @category_children = @item.category.parent.parent.children
-    # # 孫カテゴリー一覧
-    # @category_grandchildren = @item.category.parent.children
 
     grandchild_category = @item.category
     child_category = grandchild_category.parent

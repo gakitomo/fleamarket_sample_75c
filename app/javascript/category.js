@@ -1,11 +1,10 @@
-// 子、孫へ入れるHTMLを定義
+
 function appendOption(category) {
   let html = 
     `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
   return html;
 }
 
-// 子カテゴリーへHTMLを入れる
 function appendChildrenBox(insertHTML) {
   let childSelectHtml = '';
   childSelectHtml = 
@@ -15,7 +14,6 @@ function appendChildrenBox(insertHTML) {
   $('#children_box').append(childSelectHtml);
 }
 
-// 孫カテゴリーへHTMLを入れる
 function appendGrandchildrenBox(insertHTML) {
   let grandchildSelectHtml = '';
   grandchildSelectHtml = 
@@ -25,9 +23,7 @@ function appendGrandchildrenBox(insertHTML) {
   $('#grandchildren_box').append(grandchildSelectHtml);
 }
 
-// 親カテゴリーの選択
 $(document).on("change","#parent_category", function() {
-  // valで親カテゴリーの名前を取得、ajaxで送る
   let parentCategory =  $("#parent_category").val();
 
   if (parentCategory != "") {
@@ -38,7 +34,6 @@ $(document).on("change","#parent_category", function() {
       dataType: 'json'
     })
     .done(function(children) {
-      // 親が変更されたら、子・孫を空にする処理
       $("#children_box").empty();
       $("#grandchildren_box").empty();
       let insertHTML = '';
@@ -56,7 +51,6 @@ $(document).on("change","#parent_category", function() {
   }
 });
 
-// 子カテゴリーの選択
 $(document).on('change', '#children_box', function() {
   let childId = $('#children_category option:selected').data('category');
   if (childId != ""){

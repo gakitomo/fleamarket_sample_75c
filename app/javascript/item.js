@@ -11,7 +11,6 @@ $(document).on('turbolinks:load', ()=> {
 
   const buildImg = (index, url)=> {
     const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
-  //  indexがundifinedになる＝変数buildFileFieldが動作していない？
 
     return html;
   }
@@ -33,7 +32,6 @@ $(document).on('turbolinks:load', ()=> {
 
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
       img.setAttribute('src', blobUrl);
-// js-file-groupのインデントが悪くて、画像のindexとjs-file-groupのindexが紐づいていない？
     } else { 
       $('#previews').append(buildImg(targetIndex, blobUrl));
       $('.items__box--js').append(buildFileField(fileIndex[0]));

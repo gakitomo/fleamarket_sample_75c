@@ -32,7 +32,7 @@
             = f.label "必須", class: "required"
           = f.password_field :password_confirmation, placeholder:"上記と同様のパスワード", class: "input-form"
 
-        = f.fields_for :profile do |i|
+        = f.fields_for :profile, multipart: :true do |i|
           .field
             .item
               = i.label "お名前(全角)"

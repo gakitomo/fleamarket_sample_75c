@@ -104,5 +104,53 @@ describe Item do
     item.valid?
     expect(item.errors[:price]).to include()
     end
+
+  it 'nameがない場合は登録できないこと'   do
+    item = FactoryBot.build(:item, name: nil)
+    item.valid?
+    expect(item.errors[:name]).to include("を入力してください")
+  end
+
+  it 'descriptionがない場合は登録できないこと'  do  
+    item = FactoryBot.build(:item, description: nil)
+    item.valid?
+    expect(item.errors[:description]).to include()
+  end
+
+  it 'condition_idがない場合は登録できないこと'  do  
+    item = FactoryBot.build(:item, condition_id: nil)
+    item.valid?
+    expect(item.errors[:condition_id]).to include()
+  end
+
+  it 'shipping_burden_idがない場合は登録できないこと ' do    
+    item = FactoryBot.build(:item, shipping_burden_id: nil)
+    item.valid?
+    expect(item.errors[:shipping_burden_id]).to include()
+  end
+
+  it 'shipping_method_id がない場合は登録できないこと'  do
+    item = FactoryBot.build(:item, shipping_method_id: nil)
+    item.valid?
+    expect(item.errors[:shipping_method_id ]).to include()
+  end
+
+  it 'shipping_area_idがない場合は登録できないこと'   do
+    item = FactoryBot.build(:item, shipping_area_id: nil)
+    item.valid?
+    expect(item.errors[:shipping_area_id]).to include()
+  end
+
+  it 'category_idがない場合は登録できないこと'  do  
+    item = FactoryBot.build(:item, category_id: nil)
+    item.valid?
+    expect(item.errors[:category_id]).to include()
+  end
+
+  it 'priceがない場合は登録できないこと'  do  
+    item = FactoryBot.build(:item, price: nil)
+    item.valid?
+    expect(item.errors[:price]).to include()
+    end
   end
 end

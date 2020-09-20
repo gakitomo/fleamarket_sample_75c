@@ -125,6 +125,7 @@ GEM
       railties (>= 3.2)
     erubi (1.9.0)
     erubis (2.7.0)
+    excon (0.75.0)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.1.0)
@@ -348,6 +349,7 @@ DEPENDENCIES
   active_hash
   activesupport (~> 6.0.0.beta3)
   ancestry
+  bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   byebug
   capistrano
@@ -363,6 +365,7 @@ DEPENDENCIES
   devise-i18n-views
   dotenv-rails
   factory_bot_rails
+  fog-aws
   font-awesome-sass
   haml-rails
   jbuilder (~> 2.7)

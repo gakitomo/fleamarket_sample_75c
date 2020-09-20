@@ -7,19 +7,19 @@
     %li
       %i.fa.fa-angle-right
     %li
-      = link_to "ベビー、キッズ", "items"
+      = link_to @parent_category.name, "items"
     %li
       %i.fa.fa-angle-right
     %li
-      = link_to "ベビー服(男女兼用) ~95cm", "items"
+      = link_to @child_category.name, "items"
     %li
       %i.fa.fa-angle-right
     %li
-      = link_to "アウター", "items"
+      = link_to @grandchild_category.name, "items"
     %li
       %i.fa.fa-angle-right
     %li
-      = link_to "product3", "items"
+      = link_to @item.name
 
 .main
   .showmain
@@ -60,11 +60,11 @@
                 %tr
                   %th カテゴリー
                   %td
-                    = link_to "ベビー、キッズ", "items"
+                    = link_to @parent_category.name, "items"
                     %br
-                    = link_to "ベビー服(男女兼用) ~95cm", "items"
+                    = link_to @child_category.name, "items"
                     %br
-                    = link_to "アウター", "items"
+                    = link_to @grandchild_category.name, "items"
                 %tr
                   %th ブランド
                   %td
@@ -142,7 +142,7 @@
               %i.fa.fa-angle-right
 
       .relatedItems
-        = link_to "ベビー・キッズをもっと見る", "items"
+        = link_to @grandchild_category.name + "をもっと見る", "items"
         .productLists
           .productList
             = link_to "#" do

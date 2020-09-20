@@ -18,6 +18,10 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+
+    @grandchild_category = @item.category
+    @child_category = @grandchild_category.parent
+    @parent_category = @child_category.parent
   end
 
   def new

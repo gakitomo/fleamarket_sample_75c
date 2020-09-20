@@ -23,7 +23,6 @@ $(document).on('turbolinks:load', ()=> {
 
   $('.image-file').on('change', '.js-file', function(e) {
     const targetIndex = $(this).parent('.js-file_group').data('index');
-    console.log(targetIndex)
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
 

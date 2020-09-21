@@ -249,6 +249,7 @@ p{
 
 .js-file{
   font-size:10px;
+  // display:none;
 }
 
 #children_category{
@@ -263,4 +264,20 @@ p{
   width:500px;
   height:40px;
   border-radius:10px;
+}
+
+.items__box--js{
+
+  max-width: 700px;
+  height:200px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin: 0 auto;
+  margin-top: 30px;
+  font-size: 15px;
+  border-bottom: 1px solid;
+  border-color: #f8f8f8;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 700px;
 }

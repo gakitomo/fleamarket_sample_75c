@@ -246,6 +246,7 @@
         width: 220px;
         display: inline-block;
         display: flex;
+        padding-left: 0;
         a{
           background-color: #fff;
           display: inline-block;
@@ -281,9 +282,7 @@
               ul{
                 align-items: center;
                 justify-content: space-between;
-                li{
-                  margin-left: auto;
-                }
+
               }
               p{
                 font-size: 10px;

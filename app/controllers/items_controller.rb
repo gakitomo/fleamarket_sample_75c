@@ -19,9 +19,15 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
 
+    # @parent_category = @item.category
+    # @child_category = @parent_category.children
+    # @grandchild_category = @child_category.children
+
     @grandchild_category = @item.category
-    @child_category = @grandchild_category.parent
-    @parent_category = @child_category.parent
+    if @grandchild_category.has_parent?
+      @child_category = @grandchild_category.parent
+      @parent_category = @child_category.parent
+    end
   end
 
   def new
@@ -30,9 +36,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-  end
-
-  def destroy
   end
 
 
@@ -56,7 +59,12 @@ class ItemsController < ApplicationController
     @category_grandchildren = @item.category.parent.children
   end
 
-
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+    redirect_to root_path
+  end
+  
   private
   def item_params
     params.require(:item).permit(:name, :description,:brand,:condition_id,:shipping_area_id,:shipping_method_id,:shipping_burden_id,:category_id,:seller_id,:buyer_id,:shipping_data,:price,images_attributes: [:src, :_destroy, :id]).merge(seller_id: current_user.id)

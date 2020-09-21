@@ -3,21 +3,22 @@
 %nav.breadCrumbs
   %ul
     %li
-      = link_to "FURIMA", root_path
+      = link_to "FURIMA", items_path
     %li
       %i.fa.fa-angle-right
-    %li
-      = link_to @parent_category.name, "items"
-    %li
-      %i.fa.fa-angle-right
-    %li
-      = link_to @child_category.name, "items"
-    %li
-      %i.fa.fa-angle-right
-    %li
-      = link_to @grandchild_category.name, "items"
-    %li
-      %i.fa.fa-angle-right
+    -if @grandchild_category.has_parent?
+      %li
+        = link_to @parent_category.name, "items"
+      %li
+        %i.fa.fa-angle-right
+      %li
+        = link_to @child_category.name, "items"
+      %li
+        %i.fa.fa-angle-right
+      %li
+        = link_to @grandchild_category.name, "items"
+      %li
+        %i.fa.fa-angle-right
     %li
       = link_to @item.name
 
@@ -30,11 +31,11 @@
           %h2.itemBox__name
             = @item.name
           .itemBox__body
-            %ul
-              %li
+            %ul.top
+              %li.topimage
                 = image_tag @item.images[0].src.url
-                %ul
-                  %li
+                %ul.subimage
+                  %li.subimages
                     -# - subitem = @item.images.src.url > @item.images[0].src.url
                     - @item.images.each do |image|
                       = image_tag image.src.url
@@ -60,12 +61,13 @@
                     = @item.seller.given_name
                 %tr
                   %th カテゴリー
-                  %td
-                    = link_to @parent_category.name, "items"
-                    %br
-                    = link_to @child_category.name, "items"
-                    %br
-                    = link_to @grandchild_category.name, "items"
+                  -if @grandchild_category.has_parent?
+                    %td
+                      = link_to @parent_category.name, "items"
+                      %br
+                      = link_to @child_category.name, "items"
+                      %br
+                      = link_to @grandchild_category.name, "items"
                 %tr
                   %th ブランド
                   %td
@@ -101,7 +103,7 @@
             %ul.butttons
               - if user_signed_in?
                 %li
-                  = link_to "product_path(product)", method: :delete, class: "deleteBtn" do
+                  = link_to item_path(@item.id), method: :delete, class: "deleteBtn" do
                     %i.fas.fa-trash-alt
                     削除
                 %li

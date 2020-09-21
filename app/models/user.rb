@@ -14,7 +14,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :profile
 
           
-  has_secure_password
+  # has_secure_password
 
   def soft_delete  
     update_attribute(:deleted_at, Time.current)  

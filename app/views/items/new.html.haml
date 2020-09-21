@@ -10,23 +10,23 @@
         .items__box--list
           %p.name 出品画像
           %p.need 必須
-         
+
       
       .items__box--image 
         #previews
           - if @item.persisted?
             - @item.images.each_with_index do |image, i|
               = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
- 
+
       = f.fields_for :images do |image|
-           
+
         
         .js-file_group{"data-index" => "#{image.index}"}
           .image-file  
             .js-file_group{"data-index" => "#{image.index}"}
               = image.file_field :src,class: 'js-file'
               %span.js-remove ×
-       
+
       .image-file        
         .items__box--js
       .items__box

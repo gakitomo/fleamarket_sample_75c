@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'address', to: 'users/registrations#new_address'
     post 'address', to: 'users/registrations#create_address'
+    get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -3,4 +3,4 @@ FactoryBot.define do
     name {"レモン"}
     ancestry {nil}
   end
-end
+end 

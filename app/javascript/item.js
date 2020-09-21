@@ -4,14 +4,13 @@ $(document).on('turbolinks:load', ()=> {
                     <input class="js-file" type="file"
                     name="item[images_attributes][${num}][src]"
                     id="item_images_attributes_${num}_src"><br>
-                    <div class="js-remove">削除</div>
+                    <div class="js-remove">×</div>
                   </div>`;
     return html;
   }
 
   const buildImg = (index, url)=> {
     const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
-  //  indexがundifinedになる＝変数buildFileFieldが動作していない？
 
     return html;
   }
@@ -24,7 +23,6 @@ $(document).on('turbolinks:load', ()=> {
 
   $('.image-file').on('change', '.js-file', function(e) {
     const targetIndex = $(this).parent('.js-file_group').data('index');
-    console.log(targetIndex)
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
 
@@ -33,7 +31,6 @@ $(document).on('turbolinks:load', ()=> {
 
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
       img.setAttribute('src', blobUrl);
-// js-file-groupのインデントが悪くて、画像のindexとjs-file-groupのindexが紐づいていない？
     } else { 
       $('#previews').append(buildImg(targetIndex, blobUrl));
       $('.items__box--js').append(buildFileField(fileIndex[0]));

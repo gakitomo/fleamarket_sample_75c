@@ -241,7 +241,6 @@ p{
 
 .image-file{
   width:200px;
-  height:150px;
   font-size:10px;
   margin-left:100px;
   
@@ -249,6 +248,10 @@ p{
 
 .js-file{
   font-size:10px;
+}
+
+.js-file_group{
+  margin-right: 500px;
 }
 
 #children_category{
@@ -263,4 +266,29 @@ p{
   width:500px;
   height:40px;
   border-radius:10px;
+}
+
+.items__box--js{
+
+  max-width: 700px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  font-size: 15px;
+  border-bottom: 1px solid;
+  border-color: #f8f8f8;
+  padding-bottom: 20px;
+  width: 700px;
+}
+
+#grandchildren_box{
+  margin-top:10px;
+}
+
+#child_box{
+  margin-top:10px;
+}
+
+.js-remove{
+  font-size:8px;
+  width:100px;
 }

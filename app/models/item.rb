@@ -10,9 +10,9 @@ class Item < ApplicationRecord
 
   validates :shipping_method, presence: true
   belongs_to :category
-  belongs_to :user, foreign_key: 'user_id'
+  # belongs_to :user, foreign_key: 'user_id'
   has_many :images
-  accepts_nested_attributes_for :images
+  accepts_nested_attributes_for :images,allow_destroy: true
   belongs_to :seller,class_name: "User",foreign_key: "seller_id",optional: true
   belongs_to :buyer, class_name: "User", foreign_key: "buyer_id",optional: true
 

@@ -97,12 +97,12 @@
     background-color: white;
     overflow: scroll;
     padding-top: 15px;
+    width: 400px;
     .sidebar__title{
       font-size: 24px;
       margin: 0 0 15px;
       text-align: center;
       .list-group{
-        
         margin: 0 auto;
         margin-top: 5px;
         &__menu{
@@ -124,6 +124,7 @@
   .right-content{
     background-color: white;
     padding-left: 30px;
+    overflow: scroll;
     .main__title{
       font-size: 30px;
       text-align: center;
@@ -135,12 +136,10 @@
       justify-content: center;
       text-align: center;
       flex-direction: middle;
-      padding: 0 10px 24px;
-      margin: 0 auto;
-      border: 1px solid #777777;
+      padding: 0 10px ;
       &__box{
         width:200px;
-        height: 270px;
+        height: 250px;
         &--image {
           margin: 0 auto;
           width: 160px;

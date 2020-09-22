@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+  # protect_from_forgery
   before_action :basic_auth, if: :production?
   protect_from_forgery with: :null_session
   before_action :authenticate_user!
@@ -18,6 +18,8 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
   end
+
+  private
   
 
   def production?

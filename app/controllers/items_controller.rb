@@ -38,7 +38,7 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    @item.images.new
+    # @item.images.new
 
     grandchild_category = @item.category
     child_category = grandchild_category.parent

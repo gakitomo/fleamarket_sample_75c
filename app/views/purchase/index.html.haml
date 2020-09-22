@@ -28,11 +28,12 @@
 .purchase-method
   .purchase-method__title
     お支払方法
-    .purchase-method__title--update
-      = link_to "変更する","#", calss:"update-btn"
+    - if @card.blank?
+      .purchase-method__title--update
+        = link_to "登録する", new_card_path, calss:"update-btn"
   .purchase-method__text
   - if @card.blank?
-    =link_to "クレジットカードを登録してください", new_card_path
+    %br /
   - else
     .card__info
       .card__brand
@@ -48,7 +49,7 @@
   .shipping-area__title
     配送先
     .shipping-area__title--update
-      = link_to "変更する","#", calss:"update-btn"
+      = link_to "変更する","#", class:"update-btn"
   .shipping-area__text
     〒111-1111
     %br
@@ -57,5 +58,10 @@
     .customer-name
       新垣結衣様
     -# = "#{@user.name}様"
-    = form_tag(action: :pay, method: :post) do
-      %button.buy-button{type:"submit"} 購入する
+    .purchase
+    - if @card.blank?
+      .attention
+        =link_to "クレジットカードを登録してください", new_card_path, class:"btn"
+    - else
+      = form_tag(action: :pay, method: :post) do
+        %button.buy-button{type:"submit"} 購入する

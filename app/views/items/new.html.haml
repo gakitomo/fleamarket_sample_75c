@@ -1,114 +1,107 @@
-
 .wrapper
-  = image_tag "logo.png"
-
-  
-
+  = image_tag "logo.png" ,class:"header-image"  
   .items
-    = form_with model: @item,local: true do |f|
-      .items__box
-        .items__box--list
-          %p.name 出品画像
-          %p.need 必須
-         
-      
-      .items__box--image 
-        #previews
-          - if @item.persisted?
-            - @item.images.each_with_index do |image, i|
-              = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
- 
-      = f.fields_for :images do |image|
-           
-        
-        .js-file_group{"data-index" => "#{image.index}"}
-          .image-file  
-            .js-file_group{"data-index" => "#{image.index}"}
-              = image.file_field :src,class: 'js-file'
-              %span.js-remove ×
-       
-      .image-file        
-        .items__box--js
-      .items__box
-        .items__box--list
-          
-          %p.name 商品名 
-          %p.need 必須
-        = f.text_field :name,class: "items__box--normal",placeholder:" 商品名を入力してください",required:"true"
-      .items__box
-        .items__box--list
-          %p.name 商品の説明
-          %p.need 必須
-        = f.text_field :description,class: "items__box--large",placeholder:"",required:"true"
-
-
-      
-
-      .items__box
-        .items__box--list
-          %p.name カテゴリー
-          %p.need 必須
-        .item_input__body__category#category_box
-        .pulldown#partent_box
-          = f.select :category_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]}),{include_blank: "選択してください"}, { class: "parent_category_box", id: "parent_category"}
-
-        .pulldown.item_input__body__category__children#children_box
-        .pulldown.item_input__body__category__grandchildren#grandchildren_box
-
-      .items__box
-        .items__box--list
-          %p.name ブランド
-          %p.need 必須
-        = f.text_field :brand,class: "items__box--normal",placeholder:"例)シャネル",required:"true"
-
-      .items__box
-        .items__box--list
-          %p.name 商品の状態
-          %p.need 必須
-        = f.collection_select :condition_id,Condition.all,:id,:name,{ include_blank: '選択してください'}, { class: 'items__box--normal' , required: true } 
-        
+    .items__box
+      .items__box--list  
+        %p.name 商品画像
+        %p.need 必須
+      = form_with model:@item, local:true do |f|    
+            
+        .post__drop__box__container
+          .prev-content
+          .label-content
+            %label{for: "item_images_attributes_0_src", class: "label-box", id: "label-box--0"}
+              %i.fa.fa-camera
+          .hidden-content
+            = f.fields_for :images do |i|
+              = i.file_field :src, class: "hidden-field"
+              %input{class:"hidden-field", type: "file", name: "item[images_attributes][1][src]", id: "item_images_attributes_1_src" }
+              %input{class:"hidden-field", type: "file", name: "item[images_attributes][2][src]", id: "item_images_attributes_2_src" }
+              %input{class:"hidden-field", type: "file", name: "item[images_attributes][3][src]", id: "item_images_attributes_3_src" }
+              %input{class:"hidden-field", type: "file", name: "item[images_attributes][4][src]", id: "item_images_attributes_4_src" }
   
-      .items__box
-        .items__box--list
-          %p.name 配送料の負担
-          %p.need 必須
-        = f.collection_select :shipping_burden_id,ShippingBurden.all,:id,:name,{ include_blank: '選択してください'}, { class: 'items__box--normal' , required: true } 
+    
 
-      .items__box
-        .items__box--list
-          %p.name 発送元の地域
-          %p.need 必須
-        = f.collection_select :shipping_area_id,ShippingArea.all,:id,:name,{ include_blank: '選択してください'}, { class: 'items__box--normal' , required: true } 
+        
+        .items__box
+          .items__box--list  
+            %p.name 商品名 
+            %p.need 必須
+          = f.text_field :name,class: "items__box--normal",placeholder:" 商品名を入力してください",required:"true"
+        .items__box
+          .items__box--list
+            %p.name 商品の説明
+            %p.need 必須
+          = f.text_field :description,class: "items__box--large",placeholder:"",required:"true"
+
+
         
 
-      .items__box
-        .items__box--list
-          %p.name 配送方法
-          %p.need 必須
-        = f.collection_select :shipping_method_id,ShippingMethod.all,:id,:name,{ include_blank: '選択してください'}, { class: 'items__box--normal' , required: true } 
+        .items__box
+          .items__box--list
+            %p.name カテゴリー
+            %p.need 必須
+          .item_input__body__category#category_box
+          .pulldown#partent_box
+            = f.select :category_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]}),{include_blank: "選択してください"}, { class: "parent_category_box", id: "parent_category"}
 
-      .items__box
-        .items__box--list
-          %p.name 発送までの日数
-          %p.need 必須
-        = f.select :shipping_data, {'1~2日で発送': 1, '2~3日で発送': 2,'4~7日で発送': 3}, { include_blank: '選択してください'}, { class: 'items__box--normal' , required: true } 
+          .pulldown.item_input__body__category__children#children_box
+          .pulldown.item_input__body__category__grandchildren#grandchildren_box
+
+        .items__box
+          .items__box--list
+            %p.name ブランド
+            %p.need 必須
+          = f.text_field :brand,class: "items__box--normal",placeholder:"例)シャネル",required:"true"
+
+        .items__box
+          .items__box--list
+            %p.name 商品の状態
+            %p.need 必須
+          = f.collection_select :condition_id,Condition.all,:id,:name,{ include_blank: '選択してください'}, { class: 'items__box--normal' , required: true } 
+          
+    
+        .items__box
+          .items__box--list
+            %p.name 配送料の負担
+            %p.need 必須
+          = f.collection_select :shipping_burden_id,ShippingBurden.all,:id,:name,{ include_blank: '選択してください'}, { class: 'items__box--normal' , required: true } 
+
+        .items__box
+          .items__box--list
+            %p.name 発送元の地域
+            %p.need 必須
+          = f.collection_select :shipping_area_id,ShippingArea.all,:id,:name,{ include_blank: '選択してください'}, { class: 'items__box--normal' , required: true } 
+          
+
+        .items__box
+          .items__box--list
+            %p.name 配送方法
+            %p.need 必須
+          = f.collection_select :shipping_method_id,ShippingMethod.all,:id,:name,{ include_blank: '選択してください'}, { class: 'items__box--normal' , required: true } 
+
+        .items__box
+          .items__box--list
+            %p.name 発送までの日数
+            %p.need 必須
+          = f.select :shipping_data, {'1~2日で発送': 1, '2~3日で発送': 2,'4~7日で発送': 3}, { include_blank: '選択してください'}, { class: 'items__box--normal' , required: true } 
+          
+            
+
+        .items__box
+          .items__box--list
+            %p.name 販売価格
+            %p.need 必須
+          = f.text_field :price,class: "items__box--normal",placeholder:"0",required:"true",style: "text-align:right"
+
+        .items__box
+          = f.submit 'Send', class: 'submit-box',value:'出品する'
         
-           
-
-      .items__box
-        .items__box--list
-          %p.name 販売価格
-          %p.need 必須
-        = f.text_field :price,class: "items__box--normal",placeholder:"0",required:"true",style: "text-align:right"
-
-      .items__box
-        = f.submit 'Send', class: 'submit-box',value:'出品する'
-       
-        %input{name: "brand", type: "submit", class: "edit-box",value:"トップに戻る"}
-       
-      
-      .items__footer
-        = image_tag "logo-white.png"
+          %input{name: "brand", type: "submit", class: "edit-box",value:"トップに戻る"}
+        
+        
+        .items__footer
+          = image_tag "logo-white.png",class:"footer-image"
 
       
       

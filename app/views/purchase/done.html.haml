@@ -1,0 +1,26 @@
+.header-logo
+  = image_tag 'logo.png'
+
+.title
+  購入が完了しました
+.purchase__item
+  .purchase__item__inner
+    .purchase__item__inner--image
+      = image_tag "icon_brand.png"
+      -# = image_tag "#{@item.images[0].url}"
+    .purchase__item__inner--detail
+      .item-name
+        カメラ
+        -# = @item.name
+        %p.price
+          300円
+          -# = "#{@item.price.to_s}円"
+          %span.shipping-free (税込) 送料込み
+.purchase__form
+  .purchase__form--title
+    お支払金額
+  .purchase__form--amount
+    300円
+    -# = "#{@item.price.to_s}円"
+.purchase__button
+  = link_to "トップページに戻る", root_path, class:"btn"

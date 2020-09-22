@@ -1,0 +1,67 @@
+.header-logo
+  = image_tag 'logo.png'
+
+.title
+  購入内容の確認
+.confirm__item
+  .confirm__item__inner
+    .confirm__item__inner--image
+      =image_tag "icon_brand.png"
+      -# = image_tag "#{@item.images[0].url}"
+    .confirm__item__inner--detail
+      .item-name
+        カメラ
+        -# = @item.name
+        %p.price
+          300円
+          -# = "¥#{@item.price.to_s}"
+          %span.shipping-free (税込) 送料込み
+
+.confirm__price
+  .confirm__price--title
+    お支払金額
+  .confirm__price--amount
+    300円
+    -# = "#{@item.price.to_s}円"
+
+
+.purchase-method
+  .purchase-method__title
+    お支払方法
+    - if @card.blank?
+      .purchase-method__title--update
+        = link_to "登録する", new_card_path, calss:"update-btn"
+  .purchase-method__text
+  - if @card.blank?
+    %br /
+  - else
+    .card__info
+      .card__brand
+        = image_tag "#{@card_src}", alt:'card_brand'
+      .card__text
+        .card__number
+          = "**** **** **** " + @card_info.last4
+        .card__expiration
+          有効期限 :
+          = @exp_month + " / " + @exp_year
+
+.shipping-area
+  .shipping-area__title
+    配送先
+    .shipping-area__title--update
+      = link_to "変更する","#", class:"update-btn"
+  .shipping-area__text
+    〒111-1111
+    %br
+    東京都〇〇区1-1
+    %br
+    .customer-name
+      新垣結衣様
+    -# = "#{@user.name}様"
+    .purchase
+    - if @card.blank?
+      .attention
+        =link_to "クレジットカードを登録してください", new_card_path, class:"btn"
+    - else
+      = form_tag(action: :pay, method: :post) do
+        %button.buy-button{type:"submit"} 購入する

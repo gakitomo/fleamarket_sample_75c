@@ -10,6 +10,7 @@ require("channels")
 require('jquery')
 require('item.js')
 require('category.js')
+require('../payjp')
 
 //= require jquery
 //= require jquery_ujs

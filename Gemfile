@@ -20,7 +20,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -39,6 +39,8 @@ group :development, :test do
   gem 'capistrano3-unicorn'
   gem 'capistrano-rails-console'
   gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -72,16 +74,16 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'active_hash'
 gem 'ancestry'
-gem 'devise' 
 gem 'payjp'
 
 gem 'zeitwerk', '~> 2.4'
 gem 'activesupport', '~> 6.0.0.beta3'
 
 gem 'font-awesome-sass'
-gem 'active_hash'
 gem 'pry-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'jquery-rails'
 gem 'dotenv-rails'
+gem 'factory_bot_rails'
+gem 'rails-controller-testing'

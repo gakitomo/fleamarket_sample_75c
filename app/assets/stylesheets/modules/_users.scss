@@ -26,7 +26,7 @@
       display: flex;
       position: relative;
       &__text{
-        width: 400px;
+        width: 900px;
         height: 50px;
         padding-left: 15px;
       }
@@ -97,24 +97,24 @@
     background-color: white;
     overflow: scroll;
     padding-top: 15px;
+    width: 400px;
     .sidebar__title{
       font-size: 24px;
       margin: 0 0 15px;
       text-align: center;
       .list-group{
-        
         margin: 0 auto;
         margin-top: 5px;
         &__menu{
-          border: 1px solid #212121;
-          background-color: honeydew;
+          border: 1px solid #000000;
+          background-color: #3CCACE;
           margin-bottom: -1px;
           padding: 10px 10px;
           font-size: 18px;
           cursor: pointer;
           a{
             text-decoration: none;
-            color: black;
+            color: white;
             display: block;
           }
         }
@@ -124,6 +124,7 @@
   .right-content{
     background-color: white;
     padding-left: 30px;
+    overflow: scroll;
     .main__title{
       font-size: 30px;
       text-align: center;
@@ -135,13 +136,10 @@
       justify-content: center;
       text-align: center;
       flex-direction: middle;
-      padding: 0 10px 24px;
-      margin: 0 auto;
-      // margin-left: 30px;
-      border: 1px solid #999999;
+      padding: 0 10px ;
       &__box{
         width:200px;
-        height: 270px;
+        height: 250px;
         &--image {
           margin: 0 auto;
           width: 160px;

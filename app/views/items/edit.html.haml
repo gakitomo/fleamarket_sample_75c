@@ -27,19 +27,14 @@
             - if @item.persisted?
               .js-file_group{"data-index" => "#{image.index}"}
                 = image.file_field :src,class: 'js-file'
-                %span.js-remove 削除
+                %span.js-remove ×
                 
-       
-            -# - if @item.persisted?
-            -#   = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
-            -# - if @item.persisted?
-            -#   .js-file_group{"data-index" => "#{@item.images.count}"}
-            -#     = file_field_tag :src, name: "item[images_attributes][#{@item.images.count}][src]", class: 'js-file'
        
       .image-file        
         .items__box--js
       .items__box
         .items__box--list
+          
           
           %p.name 商品名 
           %p.need 必須
@@ -59,10 +54,14 @@
           %p.need 必須
         .item_input__body__category#category_box
         .pulldown#partent_box
-          = f.select :category_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]}),{include_blank: "選択してください"}, { class: "parent_category_box", id: "parent_category"}
+ 
+          = f.select :parent_name, @category_parent_array, {selected:@item.category.parent.parent.name}, { class: 'parent_category_box', id: 'parent_category'}
+          
 
-        .pulldown.item_input__body__category__children#children_box
+        .pulldown.item_input__body__category__children#child_box
+          = f.select :child_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.parent.id}),{}, {class: 'parent_category_box', id: 'child_category'}
         .pulldown.item_input__body__category__grandchildren#grandchildren_box
+          = f.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.id}),{}, {class: 'parent_category_box', id: 'grandchild_category'}
 
       .items__box
         .items__box--list
@@ -111,7 +110,7 @@
         = f.text_field :price,class: "items__box--normal",placeholder:"0",required:"true",style: "text-align:right"
 
       .items__box
-        = f.submit 'Send', class: 'submit-box',value:'出品する'
+        = f.submit 'Send', class: 'submit-box',value:'編集する'
        
         %input{name: "brand", type: "submit", class: "edit-box",value:"トップに戻る"}
        

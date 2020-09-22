@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
 
 
   def create
-    @item = Item.new(item_params)
+    @item = Item.create!(item_params)
     if @item.save
       redirect_to root_path
     else
@@ -39,19 +39,33 @@ class ItemsController < ApplicationController
   def edit
     @item = Item.find(params[:id])
     @item.images.new
-    @grandchild_category = @item.category
-    @child_category = @grandchild_category.parent 
-    @category_parent = @child_category.parent
-  
-    @category = Category.find(params[:id])
+
+    grandchild_category = @item.category
+    child_category = grandchild_category.parent
+
+
+    @category_parent_array = []
     
-    @category_children = @item.category.parent.parent.children
-    @category_grandchildren = @item.category.parent.children
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+      
+    end
+
+    @category_children_array = []
+    Category.where(ancestry: child_category.ancestry).each do |children|
+      @category_children_array << children
+    end
+
+    @category_grandchildren_array = []
+    Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
+      @category_grandchildren_array << grandchildren
+    end
+  
   end
 
   def update
-    @item = Item.update(item_params)
-    if @item.save
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
       redirect_to root_path
     else
       render :edit

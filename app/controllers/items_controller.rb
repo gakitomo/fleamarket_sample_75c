@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_category, only: [:new, :edit, :create, :update, :destroy]
   before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :destroy]
 
   def get_category_children
     @category_children = Category.find(params[:parent_name]).children
@@ -17,8 +18,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
-
     @grandchild_category = @item.category
     if @grandchild_category.has_parent?
       @child_category = @grandchild_category.parent
@@ -56,9 +55,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    item = Item.find(params[:id])
-    item.destroy
-    redirect_to root_path
+    if @item.destroy
+      redirect_to root_path
+    else
+      redirect_to root_path, notice: '削除できませんでした'
+    end
   end
 
   private
@@ -69,6 +70,10 @@ class ItemsController < ApplicationController
   def set_category  
     @category_parent_array = Category.where(ancestry: nil)
   end
+
+  def set_item
+    @item = Item.find(params[:id])
+ end
 
 end
 

@@ -1,0 +1,202 @@
+.header-logo{
+  text-align: center;
+  padding: 30px;
+  border-bottom: 1px solid #777777;
+  img{
+    width: 360px;
+    height: 90px;
+  }
+}
+
+.title{
+  text-align: center;
+  font-size: 32px;
+  margin: 28px;
+}
+
+.confirm__item{
+  &__inner{
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    &--image{
+      margin-right: 20px;
+      img{
+        width: 120px;
+        height: 90px;
+        border: 1px solid black;
+      }
+    }
+    &--detail{
+      padding: 10px;
+      margin-left: 20px;
+      .item-name{
+        font-size: 24px;
+        p{
+          font-size: 18px;
+          span{
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+.confirm__price{
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bold;
+  &--title{
+    margin-right: 15px;
+  }
+  &--amount{
+    margin-left: 15px;
+  }
+}
+
+.purchase-method{
+  text-align: center;
+  margin-top: 20px;
+  &__title{
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    &--update{
+      a{
+        padding-left: 20px;
+        font-weight: normal;
+      }
+    }
+  }
+  .card__info{
+    display: flex;
+    justify-content: center;
+  }
+  .card__brand{
+    img{
+      width: 90px;
+      height: 60px;
+      margin: 10px;
+    }
+  }
+  .card__number{
+    font-size: 20px;
+    margin-top: 10px;
+    li{
+      list-style: none;
+    }
+  }
+  .card__expiration{
+    font-size: 20px;
+    list-style: none;
+  }
+  
+}
+
+.shipping-area{
+  text-align: center;
+  margin-top: 20px;
+  &__title{
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    &--update{
+      a{
+      padding-left: 20px;
+      font-weight: normal;
+      }
+    }
+  }
+  &__text{
+    font-size: 20px;
+    .customer-name{
+      font-size: 24px;
+    }
+    .attention{
+      padding: 20px;
+      margin-bottom: 30px;
+      .btn{
+        width: 300px;
+        padding: 20px;
+        background-color: #3CCACE;
+        color: #FFFFFF;
+        font-size: 20px;
+        border-radius: 4px;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+    form{
+      margin: 20px 0;
+      button{
+      width: 300px;
+      height: 50px;
+      font-size: 20px;
+      border-radius: 4px;
+      background-color:#3CCACE;
+      color: #fff;
+      }
+    }
+  }
+}
+
+.purchase__item{
+  &__inner{
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    &--image{
+      margin-right: 20px;
+      img{
+        width: 120px;
+        height: 90px;
+        border: 1px solid black;
+      }
+    }
+    &--detail{
+      padding: 10px;
+      margin-left: 20px;
+      .item-name{
+        font-size: 24px;
+        p{
+          font-size: 18px;
+          span{
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+.purchase__form{
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bold;
+  &--title{
+    margin-right: 15px;
+  }
+  &--amount{
+    margin-left: 15px;
+  }
+}
+.purchase__button{
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 30px;
+  .btn{
+    width: 300px;
+    padding: 20px;
+    background-color: #3CCACE;
+    color: #FFFFFF;
+    font-size: 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}

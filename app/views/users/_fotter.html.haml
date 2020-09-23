@@ -1,0 +1,53 @@
+%aside.appBanner
+  .inner
+    %h2.inner__title だれでもかんたん、人生を変えるフリマアプリ
+    %p.inner__text 今すぐ無料ダウンロード
+    .inner__icon
+      = link_to image_tag('Download_on_the_App_Store_Badge_JP_RGB_blk_100317.svg', class: "apple"), 'items'
+      = link_to image_tag('google-play-badge.png', class: "google"), 'items'
+
+
+
+.footer
+  %ul.contents
+    %li.content
+      %h2.content__head FURIMAについて
+      %ul
+        %li
+          = link_to "会社概要", "items"
+        %li
+          = link_to "プライバシーポリシー", "items"
+        %li
+          = link_to "FURIMA利用規約", "items"
+        %li
+          = link_to "ポイントに関する特約", "items"
+        
+    %li.content
+      %h2.content__head FURIMAを見る
+      %ul
+        %li
+          = link_to "カテゴリー一覧", "items"
+        %li
+          = link_to "ブランド一覧", "items" 
+
+    %li.content
+      %h2.content__head ヘルプ＆ガイド
+      %ul
+        %li
+          = link_to "FURIMAガイド", "items"
+        %li
+          = link_to "FURIMAロゴ利用ガイドライン", "items"
+        %li
+          = link_to "お知らせ", "items"
+  .footer__logo
+    = link_to image_tag('logo-white.png'), 'items'
+    %p © FURIMA
+
+  = link_to new_item_path do
+    .purchaseBtn
+      %span.purchaseBtn__text 出品する
+      = image_tag "icon_camera.png", html:"purchaseBtn__icon"
+
+
+      
+      

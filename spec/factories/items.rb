@@ -11,4 +11,4 @@ FactoryBot.define do
     price{'2'}
     association :category, factory: :category
   end
-end
+end 

@@ -1,3 +1,4 @@
+
 function appendOption(category) {
   let html = 
     `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
@@ -24,6 +25,7 @@ function appendGrandchildrenBox(insertHTML) {
 
 $(document).on("change","#parent_category", function() {
   let parentCategory =  $("#parent_category").val();
+
   if (parentCategory != "") {
     $.ajax( {
       type: 'GET',
@@ -48,8 +50,36 @@ $(document).on("change","#parent_category", function() {
     $("#grandchildren_box").empty();
   }
 });
+
 $(document).on('change', '#children_box', function() {
   let childId = $('#children_category option:selected').data('category');
+  if (childId != ""){
+    $.ajax({
+      url: 'get_category_grandchildren',
+      type: 'GET',
+      data: { child_id: childId },
+      datatype: 'json'
+    })
+    .done(function(grandchildren) {
+      if (grandchildren.length != 0) {
+        $("#grandchildren_box").empty();
+        let insertHTML = '';
+        grandchildren.forEach(function(grandchild) {
+          insertHTML += appendOption(grandchild);
+        });
+        appendGrandchildrenBox(insertHTML);
+      }
+    })
+    .fail(function() {
+      alert('error:取得に失敗');
+    })
+  }else{
+    $("#grandchildren_box").empty();    
+  }
+});
+
+$(document).on('change', '#child_box', function() {
+  let childId = $('#child_category option:selected').data('category');
   if (childId != ""){
     $.ajax({
       url: 'get_category_grandchildren',

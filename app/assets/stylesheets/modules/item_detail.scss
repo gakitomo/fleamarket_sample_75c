@@ -63,10 +63,10 @@
         }
         &__body{
           margin: 16px 0 0;
-          ul{
+          .top{
             position: relative;
             display: flex;
-            li{
+            .topimage{
               display: flex;
               flex-direction: column;
               width: 560px;
@@ -77,21 +77,13 @@
                 height: 346px;
                 width: 560px;
               }
-              ul{
-                display: flex;
+
+              .subimage{
                 justify-content: center;
                 margin-top: 10px;
-                li{
-                  width: 25%;
-                  margin: 0 25px 0 0;
-                  img{
-                    object-fit: cover;
-                    height: 87px;
-                  }
-                }
-                li{
-                  width: 25%;
-                  margin: 0 25px 0 0;
+                display: flex;
+                .subimages{
+                  display: flex;
                   img{
                     object-fit: cover;
                     height: 87px;

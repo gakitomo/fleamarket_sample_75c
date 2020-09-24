@@ -58,6 +58,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'faker', "~> 2.8"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -70,8 +71,8 @@ end
 gem 'haml-rails'
 
 gem 'devise'
-gem 'devise-i18n'
-gem 'devise-i18n-views'
+# gem 'devise-i18n'
+# gem 'devise-i18n-views'
 gem 'active_hash'
 gem 'ancestry'
 gem 'payjp'
@@ -87,3 +88,5 @@ gem 'jquery-rails'
 gem 'dotenv-rails'
 gem 'factory_bot_rails'
 gem 'rails-controller-testing'
+gem 'fog-aws'
+gem "aws-sdk-s3", require: false

@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
   before_action :set_category, only: [:new, :edit, :create, :update, :destroy]
   before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
-  
+  before_action :set_item, only: [:show, :destroy]
+
   def get_category_children
     @category_children = Category.find(params[:parent_name]).children
   end
@@ -13,8 +14,15 @@ class ItemsController < ApplicationController
 
 
   def index
-    @items = Item.includes(:images).order('created_at DESC')
-    
+    @items = Item.all.limit(5).order("created_at DESC")
+  end
+
+  def show
+    @grandchild_category = @item.category
+    if @grandchild_category.has_parent?
+      @child_category = @grandchild_category.parent
+      @parent_category = @child_category.parent
+    end
   end
 
   def new
@@ -22,8 +30,10 @@ class ItemsController < ApplicationController
     @item.images.new
   end
 
-  def show
+
+  def edit
   end
+
 
 
 
@@ -63,6 +73,16 @@ class ItemsController < ApplicationController
   
   end
 
+
+  def destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      redirect_to root_path, notice: '削除できませんでした'
+    end
+  end
+
+
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
@@ -71,6 +91,7 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
+
 
   private
   def item_params
@@ -81,7 +102,10 @@ class ItemsController < ApplicationController
     @category_parent_array = Category.where(ancestry: nil)
   end
 
-  
+  def set_item
+    @item = Item.find(params[:id])
+ end
+
 
 end
 

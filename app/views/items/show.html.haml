@@ -30,7 +30,8 @@
     .contentRight
       .topContent
         .itemBox
-          %h2.itemBox__name product3
+          %h2.itemBox__name
+            ="#{@item.name}"
           .itemBox__body
 
             %ul.top
@@ -44,14 +45,14 @@
 
           .itemBox__price
             %span.digit
-              ¥30000
+              ="¥#{@item.price.to_s}"
             .itemBox__price-detail
               %span
                 (税込み)
               %span
                 (送料込み)
           .itemDetail
-            親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+            ="#{@item.description}"
           .table
             %table
               %tbody
@@ -103,23 +104,18 @@
 
           .buttonArea
             %ul.butttons
-              - if user_signed_in?
-                %li
-                  = link_to item_path(@item.id), method: :delete, class: "deleteBtn" do
-                    %i.fas.fa-trash-alt
-                    削除
-                %li
-                  = link_to "edit_item_path(item)", class: "editBtn" do
-                    %i.fas.fa-edit
-                    編集
-
-              - else
-                %li
-                  = link_to "#", class: "purchaseBtn" do
-                    %i.fas.fa-shopping-cart
-                    購入
-                
-
+              %li
+                = link_to item_path(@item.id), method: :delete, class: "deleteBtn" do
+                  %i.fas.fa-trash-alt
+                  削除
+              %li
+                = link_to "edit_item_path(item)", class: "editBtn" do
+                  %i.fas.fa-edit
+                  編集
+              %li
+                = link_to purchase_item_path, class: "purchaseBtn" do
+                  %i.fas.fa-shopping-cart
+                  購入
 
         .commentBox
           %ul.commentContents
@@ -132,17 +128,6 @@
               %button.commentBtn{name: "button", type: "submit"}
                 %i.fa.fa-comment
                   コメントする
-              -# = form_for [@comment],html: {class: 'new__comment' } do |f|
-                = f.text_field :content, class: 'commnet__body'
-                %p.noticeMsg
-                  "相手のことを考え丁寧なコメントを心がけましょう"
-                  %br
-                  "不快な言葉遣いなどは利用制限や大会処分となることがあります"
-                = f.submit 'Send', class: 'commentBtn'
-                  = icon('fa', 'comment', class: "commentBtn")
-                    コメントする
-                
-                  
 
       %ul.links
         %li.before

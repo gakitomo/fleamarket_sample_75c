@@ -31,9 +31,6 @@ class ItemsController < ApplicationController
     @item.images.new
   end
 
-  def edit
-  end
-
   def create
     @item = Item.create!(item_params)
     if @item.save
@@ -76,7 +73,6 @@ class ItemsController < ApplicationController
       redirect_to root_path, notice: '削除できませんでした'
     end
   end
-
 
   def update
     @item = Item.find(params[:id])
@@ -146,7 +142,5 @@ class ItemsController < ApplicationController
     @item_buyer= Item.find(params[:id])
     @item_buyer.update(buyer_id: current_user.id)
   end
-
-
 end
 

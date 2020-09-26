@@ -71,6 +71,16 @@
       }
     }
   }
+  .attention{
+    margin: 0 auto;
+    width: 300px;
+    padding: 5px 15px;
+    background-color: red;
+    a{
+      text-decoration: none;
+      color: white;
+    }
+  }
   .card__info{
     display: flex;
     justify-content: center;

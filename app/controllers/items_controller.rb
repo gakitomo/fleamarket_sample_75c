@@ -143,4 +143,3 @@ class ItemsController < ApplicationController
     @item_buyer.update(buyer_id: current_user.id)
   end
 end
-

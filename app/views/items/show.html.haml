@@ -106,13 +106,13 @@
 
           .buttonArea
             %ul.butttons
-              - if user_signed_in?
+              - if user_signed_in? && current_user.id == @item.seller_id
                 %li
                   = link_to item_path(@item.id), method: :delete, class: "deleteBtn" do
                     %i.fas.fa-trash-alt
                     削除
                 %li
-                  = link_to "edit_item_path(item)", class: "editBtn" do
+                  = link_to edit_item_path(@item.id), class: "editBtn" do
                     %i.fas.fa-edit
                     編集
 

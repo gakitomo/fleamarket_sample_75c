@@ -41,3 +41,5 @@ yarn-debug.log*
 config/secrets.yml
 
 public/uploads
+
+/config/credentials/development.key

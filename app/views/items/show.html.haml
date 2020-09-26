@@ -22,7 +22,7 @@
       %li
         %i.fa.fa-angle-right
     %li
-      = link_to "product3", "items"
+      = link_to @item.name
 
 .main
   .showmain
@@ -31,7 +31,8 @@
       .topContent
         .itemBox
           %h2.itemBox__name
-            ="#{@item.name}"
+            = @item.name
+
           .itemBox__body
 
             %ul.top
@@ -45,20 +46,25 @@
 
           .itemBox__price
             %span.digit
+
               ="¥#{@item.price.to_s}"
+
             .itemBox__price-detail
               %span
                 (税込み)
               %span
                 (送料込み)
           .itemDetail
-            ="#{@item.description}"
+
+            = @item.description
           .table
             %table
               %tbody
                 %tr
                   %th 出品者
-                  %td hoge
+                  %td 
+                    = @item.seller.family_name
+                    = @item.seller.given_name
                 %tr
                   %th カテゴリー
 
@@ -73,19 +79,19 @@
                 %tr
                   %th ブランド
                   %td
-                %tr
-                  %th 商品のサイズ
-                  %td
+                    = @item.brand
                 %tr
                   %th 商品の状態
-                  %td 未使用に近い
+                  %td 
+                    = @item.condition.name
                 %tr
                   %th 配送料の負担
-                  %td 送料込み(出品者負担)
+                  %td 
+                    = @item.shipping_burden.name
                 %tr
                   %th 発送元の地域
                   %td
-                    = link_to "岩手県", "items"
+                    = @item.shipping_area.name
 
                 %tr
                   %th 発送日の目安
@@ -101,21 +107,25 @@
                   %i.fa.fa-flag
                   不適切な商品の通報
 
-
           .buttonArea
             %ul.butttons
-              %li
-                = link_to item_path(@item.id), method: :delete, class: "deleteBtn" do
-                  %i.fas.fa-trash-alt
-                  削除
-              %li
-                = link_to "edit_item_path(item)", class: "editBtn" do
-                  %i.fas.fa-edit
-                  編集
-              %li
-                = link_to purchase_item_path, class: "purchaseBtn" do
-                  %i.fas.fa-shopping-cart
-                  購入
+
+              - if user_signed_in? && current_user.id == @item.seller_id
+                %li
+                  = link_to item_path(@item.id), method: :delete, class: "deleteBtn" do
+                    %i.fas.fa-trash-alt
+                    削除
+                %li
+                  = link_to edit_item_path(@item.id), class: "editBtn" do
+                    %i.fas.fa-edit
+                    編集
+
+              - else
+                %li
+                  = link_to "#", class: "purchaseBtn" do
+                    %i.fas.fa-shopping-cart
+                    購入
+
 
         .commentBox
           %ul.commentContents
@@ -128,6 +138,8 @@
               %button.commentBtn{name: "button", type: "submit"}
                 %i.fa.fa-comment
                   コメントする
+
+
 
       %ul.links
         %li.before
@@ -142,13 +154,13 @@
               %i.fa.fa-angle-right
 
       .relatedItems
-        = link_to "ベビー・キッズをもっと見る", "items"
+        = link_to @grandchild_category.name + "をもっと見る", "items"
         .productLists
           .productList
             = link_to "#" do
-              = image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/16/IMG_9072.JPG", class: "productList-image")
+              = image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/16/IMG_9072.JPG", class: "productList-image") #{@items.image}
               .bodyText
-                %h3.nameText ee
+                %h3.nameText 
                 .detail
                   %ul
                     %li 1000円

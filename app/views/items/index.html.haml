@@ -107,6 +107,10 @@
             - @items.each do |item|
               = link_to item_path(item.id) do
                 = image_tag item.images[0].src.url
+                -if item.buyer_id.present? 
+                  .items-box_photo__sold
+                    .items-box_photo__sold__inner
+                      SOLD
                 .body
                   %h3.names 
                   = item.name

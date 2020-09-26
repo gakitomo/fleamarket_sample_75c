@@ -1,45 +1,58 @@
-.purchase
-  .purchase__header
-    .purchase__header__logo
-      = link_to root_path ,method: :get,class:"purchase__header__logo__link" do
-        = image_tag src="logo.png", size: "170x50"      
-  .purchase__body
-    .purchase__body__title
-      購入内容の確認
-    .purchase__body__item
-      .purchase__body__item__img
-        = image_tag("#{@item.item_imgs[0].url}", size: "80x80")
-      .purchase__body__item__right
-        .purchase__body__item__right__name
-          = @item.name
-        %ul.purchase__body__item__right__object
-          送料込み(税込)
-          %li.purchase__body__item__right__object__price
-            = "¥#{@item.price.to_s(:delimited, delimiter: ',')}"
-    .purchase__body__price
-      .purchase__body__price__word
-        支払金額
-      .purchase__body__price__price
-        = "¥#{@item.price.to_s(:delimited, delimiter: ',')}"
-    .purchase__body__way-to-pay
-      %ul.purchase__body__way-to-pay__title
-        %li
-          支払い方法
-      .purchase__body__way-to-pay__credit
-        - if @card
-          = render template: 'items/cards/create' 
-        - else
-          = link_to new_item_card_path(@item) ,method: :get,class:"purchase__body__way-to-pay__credit__link" do
-            ※登録してください
+.header-logo
+  = image_tag 'logo.png'
 
-    .purchase__body__bottom-to-buy
-      .purchase__body__bottom-to-buy__object
-        = link_to pay_item_path(@item), class: "purchase__body__bottom-to-buy__object__link", method: :post do
-          .button
-            購入する
+.title
+  購入内容の確認
+.confirm__item
+  .confirm__item__inner
+    .confirm__item__inner--image
+      = image_tag @item.images[0].src.url
+    .confirm__item__inner--detail
+      .item-name
+        = "#{@item.name}"
+        %p.price
+          = "¥#{@item.price.to_s}円"
+          %span.shipping-free (税込) 送料込み
+.confirm__price
+  .confirm__price--title
+    お支払金額
+  .confirm__price--amount
+    = "#{@item.price.to_s}円"
 
- 
- 
- 
- 
- 
+
+.purchase-method
+  .purchase-method__title
+    お支払方法
+  .purchase-method__text
+  - if @card.blank?
+    .attention
+      =link_to "クレジットカードを登録してください", new_card_path, class:"btn"
+  - else
+    .card__info
+      .card__brand
+        = image_tag "#{@card_src}", alt:'card_brand'
+      .card__text
+        .card__number
+          = "**** **** **** " + @card_info.last4
+        .card__expiration
+          有効期限 :
+          = @exp_month + " / " + @exp_year
+
+.shipping-area
+  .shipping-area__title
+    配送先
+    .shipping-area__title--update
+      = link_to "変更する","#", class:"update-btn"
+  .shipping-area__text
+    〒111-1111
+    %br
+    東京都〇〇区
+    %br
+    .customer-name
+    = "#{current_user.nickname}様"
+    .purchase
+    - if @card.blank?
+        
+    - else
+      = form_tag(action: :pay, method: :post) do
+        %button.buy-button{type:"submit"} 購入する

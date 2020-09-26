@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
+  require "payjp"
   before_action :set_category, only: [:new, :edit, :create, :update, :destroy]
   before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
-  before_action :set_item, only: [:show, :destroy]
+  before_action :set_item, only: [:show, :destroy, :purchase, :done]
 
   def get_category_children
     @category_children = Category.find(params[:parent_name]).children
@@ -30,12 +31,8 @@ class ItemsController < ApplicationController
     @item.images.new
   end
 
-
   def edit
   end
-
-
-
 
   def create
     @item = Item.create!(item_params)
@@ -48,7 +45,6 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    # @item.images.new
 
     grandchild_category = @item.category
     child_category = grandchild_category.parent
@@ -92,6 +88,55 @@ class ItemsController < ApplicationController
     end
   end
 
+  def purchase
+    # @user = User.find(params[:id])
+    @item_buyer= Item.find(params[:id])
+    @item_buyer.update(buyer_id: current_user.id)
+    @card = Card.find_by(user_id: current_user.id)
+    if @card.blank?
+      # redirect_to new_card_path
+    else
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(@card.customer_id) 
+      @card_info = customer.cards.retrieve(customer.default_card)
+      @exp_month = @card_info.exp_month.to_s
+      @exp_year = @card_info.exp_year.to_s.slice(2,3)
+      @card_brand = @card_info.brand
+      case @card_brand
+      when "Visa"
+        @card_src = "cards/visa.gif"
+      when "JCB"
+        @card_src = "cards/jcb.gif"
+      when "MasterCard"
+        @card_src = "cards/mastercard.gif"
+      when "American Express"
+        @card_src = "cards/amex.gif"
+      when "Diners Club"
+        @card_src = "cards/diners.gif"
+      end
+      @address = Address.where(user_id: current_user.id).first
+      @item = Item.find(params[:id])
+    end
+  end
+
+  def pay
+    @card = Card.find_by(user_id: current_user.id)
+    @item = Item.find(params[:id])
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    Payjp::Charge.create(
+      :amount => @item.price,
+      :customer => @card.customer_id,
+      :currency => "jpy"
+    )
+    redirect_to action: "done"
+  end
+
+  def done
+    @item_buyer= Item.find(params[:id])
+    @item_buyer.update( buyer_id: current_user.id)
+    @address = Address.where(user_id: current_user.id).first
+    @item = Item.find(params[:id])
+  end
 
   private
   def item_params

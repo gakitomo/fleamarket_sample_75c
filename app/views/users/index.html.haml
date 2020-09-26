@@ -3,19 +3,16 @@
 .contents
   .left-content
     .sidebar__title
+      ="ようこそ、#{current_user.nickname}さん"
+    .sidebar__title
       商品を出品する
       .list-group
         .list-group__menu
           =link_to new_item_path do
             商品を出品する
         .list-group__menu
-          =link_to "出品した商品"
-    .sidebar__title
-      商品を購入する
-      .list-group
-        .list-group__menu
-          =link_to purchase_index_path do
-            商品を購入する
+          =link_to root_path do
+            出品した商品
     .sidebar__title
       設定
       .list-group

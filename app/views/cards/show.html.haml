@@ -1,7 +1,8 @@
+.header-logo
+  = image_tag 'logo.png'
 .title
   クレジットカードが登録されていません
-  %br
-  カードを登録してください
+
 .menu
   = button_to "新規登録する", new_card_path, method: :get, class: "card__btn"
   = button_to "マイページに戻る", users_path, method: :get, class: "card__btn"

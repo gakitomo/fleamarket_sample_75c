@@ -32,6 +32,7 @@
         .itemBox
           %h2.itemBox__name
             = @item.name
+
           .itemBox__body
 
             %ul.top
@@ -45,14 +46,16 @@
 
           .itemBox__price
             %span.digit
-              = @item.price
-              円
+
+              ="¥#{@item.price.to_s}"
+
             .itemBox__price-detail
               %span
                 (税込み)
               %span
                 (送料込み)
           .itemDetail
+
             = @item.description
           .table
             %table
@@ -106,6 +109,7 @@
 
           .buttonArea
             %ul.butttons
+
               - if user_signed_in? && current_user.id == @item.seller_id
                 %li
                   = link_to item_path(@item.id), method: :delete, class: "deleteBtn" do
@@ -121,7 +125,7 @@
                   = link_to "#", class: "purchaseBtn" do
                     %i.fas.fa-shopping-cart
                     購入
-                
+
 
         .commentBox
           %ul.commentContents
@@ -134,8 +138,8 @@
               %button.commentBtn{name: "button", type: "submit"}
                 %i.fa.fa-comment
                   コメントする
-            
-                  
+
+
 
       %ul.links
         %li.before

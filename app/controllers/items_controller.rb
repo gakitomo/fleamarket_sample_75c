@@ -88,9 +88,7 @@ class ItemsController < ApplicationController
   end
 
   def purchase
-    if @card.blank?
-
-    else
+    if @card.present?
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(@card.customer_id) 
       @card_info = customer.cards.retrieve(customer.default_card)
@@ -109,7 +107,7 @@ class ItemsController < ApplicationController
       when "Diners Club"
         @card_src = "cards/diners.gif"
       end
-      @address = Address.where(user_id: current_user.id).first
+      @address = Address.find_by(user_id: current_user.id)
     end
   end
 
@@ -124,8 +122,7 @@ class ItemsController < ApplicationController
   end
 
   def done
-    @address = Address.where(user_id: current_user.id).first
-    @item = Item.find(params[:id])
+    @address = Address.find_by(user_id: current_user.id)
   end
 
   private

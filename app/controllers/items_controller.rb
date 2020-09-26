@@ -30,8 +30,10 @@ class ItemsController < ApplicationController
     @item.images.new
   end
 
-
   def edit
+  end
+
+  def destroy
   end
 
 

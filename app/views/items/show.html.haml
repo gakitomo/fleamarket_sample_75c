@@ -22,7 +22,7 @@
       %li
         %i.fa.fa-angle-right
     %li
-      = link_to "product3", "items"
+      = link_to @item.name
 
 .main
   .showmain
@@ -30,7 +30,8 @@
     .contentRight
       .topContent
         .itemBox
-          %h2.itemBox__name product3
+          %h2.itemBox__name
+            = @item.name
           .itemBox__body
 
             %ul.top
@@ -44,20 +45,23 @@
 
           .itemBox__price
             %span.digit
-              ¥30000
+              = @item.price
+              円
             .itemBox__price-detail
               %span
                 (税込み)
               %span
                 (送料込み)
           .itemDetail
-            親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+            = @item.description
           .table
             %table
               %tbody
                 %tr
                   %th 出品者
-                  %td hoge
+                  %td 
+                    = @item.seller.family_name
+                    = @item.seller.given_name
                 %tr
                   %th カテゴリー
 
@@ -72,19 +76,19 @@
                 %tr
                   %th ブランド
                   %td
-                %tr
-                  %th 商品のサイズ
-                  %td
+                    = @item.brand
                 %tr
                   %th 商品の状態
-                  %td 未使用に近い
+                  %td 
+                    = @item.condition.name
                 %tr
                   %th 配送料の負担
-                  %td 送料込み(出品者負担)
+                  %td 
+                    = @item.shipping_burden.name
                 %tr
                   %th 発送元の地域
                   %td
-                    = link_to "岩手県", "items"
+                    = @item.shipping_area.name
 
                 %tr
                   %th 発送日の目安
@@ -99,7 +103,6 @@
                 = link_to "#" do
                   %i.fa.fa-flag
                   不適切な商品の通報
-
 
           .buttonArea
             %ul.butttons
@@ -120,7 +123,6 @@
                     購入
                 
 
-
         .commentBox
           %ul.commentContents
             %form#new_comment.new_comment
@@ -132,16 +134,7 @@
               %button.commentBtn{name: "button", type: "submit"}
                 %i.fa.fa-comment
                   コメントする
-              -# = form_for [@comment],html: {class: 'new__comment' } do |f|
-                = f.text_field :content, class: 'commnet__body'
-                %p.noticeMsg
-                  "相手のことを考え丁寧なコメントを心がけましょう"
-                  %br
-                  "不快な言葉遣いなどは利用制限や大会処分となることがあります"
-                = f.submit 'Send', class: 'commentBtn'
-                  = icon('fa', 'comment', class: "commentBtn")
-                    コメントする
-                
+            
                   
 
       %ul.links
@@ -157,13 +150,13 @@
               %i.fa.fa-angle-right
 
       .relatedItems
-        = link_to "ベビー・キッズをもっと見る", "items"
+        = link_to @grandchild_category.name + "をもっと見る", "items"
         .productLists
           .productList
             = link_to "#" do
-              = image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/16/IMG_9072.JPG", class: "productList-image")
+              = image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/16/IMG_9072.JPG", class: "productList-image") #{@items.image}
               .bodyText
-                %h3.nameText ee
+                %h3.nameText 
                 .detail
                   %ul
                     %li 1000円

@@ -30,13 +30,6 @@ class ItemsController < ApplicationController
     @item.images.new
   end
 
-  def edit
-  end
-
-  def destroy
-  end
-
-
 
   def create
     @item = Item.create!(item_params)

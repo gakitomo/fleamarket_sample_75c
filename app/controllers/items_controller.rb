@@ -105,6 +105,9 @@ class ItemsController < ApplicationController
       end
       @address = Address.find_by(user_id: current_user.id)
     end
+    if user_signed_in? && current_user.id == @item.seller_id
+      redirect_to item_path
+    end
   end
 
   def pay
@@ -119,6 +122,9 @@ class ItemsController < ApplicationController
 
   def done
     @address = Address.find_by(user_id: current_user.id)
+    if user_signed_in? && current_user.id == @item.seller_id
+      redirect_to item_path
+    end
   end
 
   private

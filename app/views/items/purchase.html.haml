@@ -44,12 +44,15 @@
     .shipping-area__title--update
       = link_to "変更する","#", class:"update-btn"
   .shipping-area__text
-    〒111-1111
+    ="〒#{current_user.address.address_number}"
     %br
-    東京都〇〇区
+    ="#{current_user.address.address_prefecture}#{current_user.address.address_name}#{current_user.address.address_block}"
+    -if current_user.address.address_building.present?
+      %br
+      ="#{current_user.address.address_building}"
     %br
     .customer-name
-    = "#{current_user.nickname}様"
+    = "#{current_user.profile.family_name} #{current_user.profile.given_name}様"
     .purchase
     - if @card.blank?
         

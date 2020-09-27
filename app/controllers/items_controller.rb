@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   require "payjp"
   before_action :set_category, only: [:new, :edit, :create, :update, :destroy]
   before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
-  before_action :set_item, only: [:show, :destroy, :purchase, :pay, :done]
+  before_action :set_item, only: [:show,:update, :destroy, :purchase, :pay, :done]
   before_action :set_card, only: [:purchase, :pay]
   before_action :set_item_buyer, only: [:purchase, :done]
 
@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
 
 
   def create
-    @item = Item.create(item_params)
+    @item = Item.new(item_params)
     
     if @item.save
       redirect_to root_path
@@ -78,7 +78,6 @@ class ItemsController < ApplicationController
 
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to root_path
     else

@@ -112,7 +112,7 @@
 
               - if user_signed_in? && current_user.id == @item.seller_id
                 %li
-                  = link_to item_path(@item.id), method: :delete, class: "deleteBtn" do
+                  = button_to item_path(@item.id),method: :delete, class: "deleteBtn" do
                     %i.fas.fa-trash-alt
                     削除
                 %li

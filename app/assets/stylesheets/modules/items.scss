@@ -238,15 +238,13 @@
       }
     }
     .productLists{
-      width: 780px;
+      max-width: calc(1090px + 20px);
       margin: 26px auto;
       display: flex;
-      justify-content: space-around;
       .productList{
         width: 220px;
         display: inline-block;
         display: flex;
-        padding-left: 0;
 
         a{
           background-color: #fff;

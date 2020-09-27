@@ -59,8 +59,7 @@
           .items__box
             .items__box--list
               %p.name ブランド
-              %p.need 必須
-            = f.text_field :brand,class: "items__box--normal",placeholder:"例)シャネル",required:"true"
+            = f.text_field :brand,class: "items__box--normal",placeholder:"例)シャネル"
 
           .items__box
             .items__box--list
@@ -104,10 +103,9 @@
 
           .items__box
             = f.submit 'Send', class: 'submit-box',value:'出品する'
-          
-            %input{name: "brand", type: "submit", class: "edit-box",value:"トップに戻る"}
-          
-          
+          .items__box  
+            = link_to "トップページに戻る", root_path
+
           .items__footer
             = image_tag "logo-white.png",class:"footer-image"
 

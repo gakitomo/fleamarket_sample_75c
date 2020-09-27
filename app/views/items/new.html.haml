@@ -10,7 +10,7 @@
         .post__drop__box__container
           .prev-content
           .label-content
-            %label{for: "item_images_attributes_0_src", class: "label-box", id: "label-box--0"}
+            %label{for: "item_images_attributes_0_src", class: "label-box", id: "label-box--0",required:"true"}
               %i.fa.fa-camera
           .hidden-content
             = f.fields_for :images do |i|
@@ -51,8 +51,7 @@
         .items__box
           .items__box--list
             %p.name ブランド
-            %p.need 必須
-          = f.text_field :brand,class: "items__box--normal",placeholder:"例)シャネル",required:"true"
+          = f.text_field :brand,class: "items__box--normal",placeholder:"例)シャネル"
 
         .items__box
           .items__box--list
@@ -96,14 +95,16 @@
 
         .items__box
           = f.submit 'Send', class: 'submit-box',value:'出品する'
+        .items__box  
+          = link_to "トップページに戻る", root_path
+
           
-          %input{name: "brand", type: "submit", class: "edit-box",value:"トップに戻る"}
         
+            
         
         .items__footer
           = image_tag "logo-white.png",class:"footer-image"
-
-          
-
+            
+ 
       
       

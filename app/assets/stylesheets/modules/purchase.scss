@@ -76,6 +76,7 @@
     width: 300px;
     padding: 5px 15px;
     background-color: red;
+    border-radius: 4px;
     a{
       text-decoration: none;
       color: white;
@@ -123,6 +124,7 @@
   }
   &__text{
     font-size: 20px;
+    margin-bottom: 10px;
     .customer-name{
       font-size: 24px;
     }

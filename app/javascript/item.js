@@ -1,6 +1,5 @@
 $(document).on('turbolinks:load', function(){
   $(function(){
-
     function buildHTML(count) {
       var html = `<div class="preview-box" id="preview-box__${count}">
                     <div class="upper-box">

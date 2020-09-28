@@ -13,7 +13,6 @@ $(document).on('turbolinks:load', function(){
                   </div>`
       return html;
     }
-
     if (window.location.href.match(/\/items\/\d+\/edit/)){
       var prevContent = $('.label-content').prev();
       labelWidth = (620 - $(prevContent).css('width').replace(/[^0-9]/g, ''));

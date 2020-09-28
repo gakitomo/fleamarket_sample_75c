@@ -4,7 +4,6 @@ $(document).on('turbolinks:load',function(){
   let form = $(".form");
 
   $("#charge-form").click(function() {
-   
     form.find("input[type=submit]").prop("disabled", true);
 
     let card = {

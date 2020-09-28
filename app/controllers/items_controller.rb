@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       @item.images.new
-      render :new
+      redirect_to request.referrer
     end
   end
 

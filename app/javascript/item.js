@@ -34,7 +34,6 @@ $(document).on('turbolinks:load', function(){
       $('.label-content').css('width', labelWidth);
     }
 
-
     $(document).on('change', '.hidden-field', function() {
       setLabel();
       var id = $(this).attr('id').replace(/[^0-9]/g, '');

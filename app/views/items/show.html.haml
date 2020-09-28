@@ -120,11 +120,16 @@
                     %i.fas.fa-edit
                     編集
 
-              - else
+              - elsif @item.buyer_id.blank?
                 %li
                   = link_to purchase_item_path, class: "purchaseBtn" do
                     %i.fas.fa-shopping-cart
                     購入
+              - else
+                %li
+                  = link_to purchase_item_path, class: "soldBtn" do
+                    SOLD OUT
+                    
 
 
         .commentBox

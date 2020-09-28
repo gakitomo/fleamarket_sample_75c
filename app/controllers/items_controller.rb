@@ -73,7 +73,7 @@ class ItemsController < ApplicationController
     if @item.destroy
       redirect_to root_path
     else
-      redirect_to root_path, notice: '削除できませんでした'
+      redirect_to root_path, alert: '削除できませんでした'
     end
   end
 
@@ -111,6 +111,9 @@ class ItemsController < ApplicationController
     if user_signed_in? && current_user.id == @item.seller_id
       redirect_to item_path
     end
+    if @item.buyer_id.present?
+      redirect_to item_path, alert: "すでに売り切れのため購入できません"
+    end
   end
 
   def pay
@@ -125,9 +128,6 @@ class ItemsController < ApplicationController
 
   def done
     @address = Address.find_by(user_id: current_user.id)
-    if user_signed_in? && current_user.id == @item.seller_id
-      redirect_to item_path
-    end
   end
 
   private

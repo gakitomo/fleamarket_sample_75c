@@ -249,6 +249,9 @@
         a{
           background-color: #fff;
           display: inline-block;
+          text-align: center;
+          text-decoration: none;
+          color: red;
           img{
             position: absolute;
             top: 0;
@@ -306,7 +309,7 @@
               }
               p{
                 font-size: 10px;
-                text-align: left;
+                text-align: center;
               }
             }
           }

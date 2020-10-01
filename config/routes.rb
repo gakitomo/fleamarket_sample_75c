@@ -33,6 +33,9 @@ Rails.application.routes.draw do
   end
 
   resources :users do
+    member do
+      resources :items, only: [:index]
+    end
   end
   resources :cards, only: [:index, :new, :create, :show, :destroy] do
   end

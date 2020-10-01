@@ -125,36 +125,32 @@
     background-color: white;
     padding-left: 30px;
     overflow: scroll;
+    width: 750px;
+    img{
+      width: 200px;
+      height: 150px;
+      margin: 10px 10px 5px;
+    }
     .main__title{
       font-size: 30px;
       text-align: center;
       padding-top: 15px;
     }
-    .item-list{
+    .item-List{
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: flex-start;
       text-align: center;
       flex-direction: middle;
-      padding: 0 10px ;
-      &__box{
-        width:200px;
-        height: 250px;
-        &--image {
-          margin: 0 auto;
-          width: 160px;
-          height: 160px;
-          margin: 10px 10px 0;
-          padding: 10px;
-          background-color: #651212;
+      .items-box_photo__sold{
+        &__inner{
+          color: red;
         }
-        &--text{
-          &--name{
-          }
-          &--price{
-            font-weight: bold;
-          }
-        }
+      }
+      a{
+        text-decoration: none;
+        color:black;
+        margin: 10px 0;
       }
     }
   }

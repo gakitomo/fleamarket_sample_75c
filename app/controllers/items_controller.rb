@@ -19,6 +19,9 @@ class ItemsController < ApplicationController
   end
 
   def show
+    unless user_signed_in?
+      redirect_to new_user_session_path
+    end
     @grandchild_category = @item.category
     if @grandchild_category.has_parent?
       @child_category = @grandchild_category.parent

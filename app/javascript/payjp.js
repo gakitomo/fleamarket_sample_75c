@@ -1,5 +1,4 @@
 $(document).on('turbolinks:load',function(){
-  
   Payjp.setPublicKey('pk_test_9a6da8909dfeab92eef15147');
   let form = $(".form");
 

@@ -10,9 +10,7 @@
         .list-group__menu
           =link_to new_item_path do
             商品を出品する
-        .list-group__menu
-          =link_to root_path do
-            出品した商品
+
     .sidebar__title
       設定
       .list-group
@@ -24,42 +22,21 @@
             ログアウト
   .right-content
     .main__title
-      閲覧した商品
-    .item-list
-      .item-list__box
-        =image_tag "icon_camera.png", class: "item-list__box--image"
-        .item-list__box--text
-          .item-list__box--text--name
-            カレー
-          .item-list__box--text--price
-            1700円
-      .item-list__box
-        =image_tag "icon_camera.png", class: "item-list__box--image"
-        .item-list__box--text
-          .item-list__box--text--name
-            おにぎり
-          .item-list__box--text--price
-            1700円
-      .item-list__box
-        =image_tag "icon_camera.png", class: "item-list__box--image"
-        .item-list__box--text
-          .item-list__box--text--name
-            ステーキ
-          .item-list__box--text--price
-            1700円
-      .item-list__box
-        =image_tag "icon_camera.png", class: "item-list__box--image"
-        .item-list__box--text
-          .item-list__box--text--name
-            うどん
-          .item-list__box--text--price
-            1700円
-      .item-list__box
-        =image_tag "icon_camera.png", class: "item-list__box--image"
-        .item-list__box--text
-          .item-list__box--text--name
-            ハンバーガー
-          .item-list__box--text--price
-            5000円
+      出品された商品一覧
+    .item-List
+      - @items.each do |item|
+        = link_to item_path(item.id) do
+          = image_tag item.images[0].src.url
+          -if item.buyer_id.present? 
+            .items-box_photo__sold
+              .items-box_photo__sold__inner
+                SOLD
+          .body
+            %ul
+              %li
+              = item.name
+              %li 
+              = item.price
+              円
 .fotter
   = render "fotter"

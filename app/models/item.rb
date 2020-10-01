@@ -8,6 +8,8 @@ class Item < ApplicationRecord
   validates :shipping_burden, presence: true
   belongs_to_active_hash :shipping_method
   validates :shipping_method, presence: true
+  belongs_to_active_hash :shipping_data
+  validates :shipping_data, presence: true
   belongs_to :category
 
  

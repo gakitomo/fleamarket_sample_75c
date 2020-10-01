@@ -95,7 +95,8 @@
 
                 %tr
                   %th 発送日の目安
-                  %td 4-7日で発送
+                  %td 
+                    = @item.shipping_data.name
           .optionalArea
             %ul
               %li#likeBtn.optionalBtn.likeBtn

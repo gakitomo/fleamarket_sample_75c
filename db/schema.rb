@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2020_09_24_220727) do
     t.string "shipping_method_id", null: false
     t.string "shipping_area_id", null: false
     t.string "category_id", null: false
-    t.integer "shipping_data", null: false
+    t.integer "shipping_data_id", null: false
     t.integer "price", null: false
     t.bigint "seller_id"
     t.bigint "buyer_id"

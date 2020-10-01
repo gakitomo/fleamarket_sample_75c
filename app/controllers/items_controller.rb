@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
 
   def show
     unless user_signed_in?
-      redirect_to new_user_session_path
+      redirect_to new_user_session_path, alert:'ログインもしくは新規会員登録が必要です'
     end
     @grandchild_category = @item.category
     if @grandchild_category.has_parent?
